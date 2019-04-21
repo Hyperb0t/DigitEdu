@@ -25,7 +25,7 @@ SECRET_KEY = 'npu*=fy#$zaq46_%m!n@9lfl^$k8hygytx=9%h$wsot=_cvt--'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.43.198", "localhost", "193.161.193.99"]
+ALLOWED_HOSTS = ["192.168.43.198", "localhost", "193.161.193.99", "127.0.0.1"]
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DigitEdu.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,6 +113,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 # Static files (CSS, JavaScript, Images)
