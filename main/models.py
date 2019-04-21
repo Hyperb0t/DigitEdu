@@ -8,6 +8,9 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
+    def subject_sorted_lesson_set(self):
+        return self.lesson_set.order_by('subject')
+
 
 class AdditionalEduResource(models.Model):
     name = models.CharField(max_length=20)
@@ -25,6 +28,10 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name + " " + self.surname
+
+    def semester_sorted_pointlist_set(self):
+        return self.pointlist_set.order_by('semester')
+
 
 
 class ResourceToStudent(models.Model):

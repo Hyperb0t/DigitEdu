@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>DigitEdu: Главная</title>
+    <h1>Главная</h1>
+    <a href=
+            {% if user.is_authenticated %}
+            "/cabinet"
+            {% else %}
+            "/login"
+            {% endif %}
+    >Личный кабинет</a>
+    <h3>Какая-то инфографика</h3>
+    <h4>Дата начала сессии {{ session.date }}</h4>
 </head>
 <body>
-$END$
 </body>
 </html>
