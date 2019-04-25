@@ -11,8 +11,10 @@ def starter(request):
 
 
 def main(request):
+    timediff = (SessionBeginDate.objects.all()[0].date - datetime.datetime.now())
     return render(request, 'main/main.html', {"session": SessionBeginDate.objects.all()[0],
-                                              "time": datetime.datetime.now()})
+                                              "time": datetime.datetime.now(),
+                                              "timediff": timediff})
 
 
 def cabinet(request):
