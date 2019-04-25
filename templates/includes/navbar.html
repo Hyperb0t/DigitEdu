@@ -1,9 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-right">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="main.html"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <button type="button" class="btn btn-primary position-relative-right" data-toggle="modal" data-target="#exampleModal">
-        Личный кабинет
-    </button>
-</nav>
+<header>
+    <div class="header">
+        <div class="leftHeader">
+            <button onclick="window.location.href = 'main'">
+                <h2 class="title">DigitEdu</h2>
+            </button>
+            <button>Пройти опрос</button>
+        </div>
+        <div class="rightHeader">
+            <button
+                    {% if user.is_authenticated %}
+                        onclick="window.location.href='/logout' "
+                    {% else %}
+                        data-toggle="modal" data-target="#exampleModal"
+                    {% endif %}>
+                <p class="name">
+                    {% if user.is_authenticated %}
+                        Выйти
+                    {% else %}
+                        Войти
+                    {% endif %}
+                </p>
+            </button>
+            <button
+                    {% if user.is_authenticated %}
+                        onclick="window.location.href='/cabinet' "
+                    {% else %}
+                        data-toggle="modal" data-target="#exampleModal"
+                    {% endif %}>
+                <p class="name">
+                    {% if user.is_authenticated %}
+                        {{ user.student.name }} {{ user.student.surname }}
+                    {% else %}
+                        Аноним
+                    {% endif %}
+                </p>
+            </button>
+
+            <div class="headerProfile">
+                {% load staticfiles %}
+                <img src="{% static 'img/none_avatar.png' %}" alt="Profile">
+            </div>
+        </div>
+    </div>
+</header>
