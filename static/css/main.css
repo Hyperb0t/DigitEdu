@@ -1,0 +1,113 @@
+nav {
+    background-color: #4ab5c4;
+    height: 60px;
+}
+
+
+* {
+    block-size: border-box;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #e9ebee;
+}
+header {
+    background: #4ab5c4;
+    width: 100%;
+}
+
+footer {
+    background: #2b2a29;
+}
+.header, .mainContent, .footer {
+    max-width: 1280px;
+    margin: auto;
+    box-sizing: border-box;
+}
+.mainContent {
+    padding: 10px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+.header > div {
+    display: flex;
+    align-items: center;
+}
+.header > div.rightHeader {
+    float: right;
+}
+.header button {
+    margin-left: 40px;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: inherit;
+}
+.header .name {
+    margin-right: 20px;
+}
+.mainContent {
+    min-height: 78vh;
+}
+.headerProfile {
+    max-width: 55px;
+    max-height: 55px;
+    overflow: hidden;
+}
+.headerProfile img {
+    width: 100%;
+}
+.mainContent > div {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.profileInformation > div {
+    background: #fff;
+    padding: 20px;
+    flex-basis: 70%;
+    box-shadow: 0 9px 25px -8px rgba(0,0,0,0.75);
+}
+.profileInformation > div:first-child {
+    flex-basis: 20%;
+}
+.mainContent > div:not(:first-child) {
+    padding: 20px;
+    box-shadow: 0 9px 25px -8px rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+.mainContent > div:not(:first-child) h4.title {
+    margin: 0;
+    font-size: 30px;
+}
+.mainContent > div:not(:first-child) h4.subTitle {
+    margin-top: 10px;
+}
+.mainContent > div:not(:first-child) div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+.statistic {
+    background: linear-gradient(135deg, #19d7c3, #28978e);
+}
+.balls {
+    background: linear-gradient(135deg, #1780b0, #36708b);
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 40px;
+    background: #2b2a29;
+}

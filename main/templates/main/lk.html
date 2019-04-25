@@ -1,0 +1,41 @@
+{% extends "wrapper.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="mainContent">
+        <div class="profileInformation">
+            <div class="profilePicture">
+                <img src="{% static 'img/none_avatar.png' %}" alt="Profile">
+            </div>
+            <div class="profileDetails">
+                <h3 class="profileStatus">Student</h3>
+                <div class="profileInfo">
+                    <div class="profileState"><span class="state">Name:</span>Кшиштан</div>
+                    <div class="profileState"><span class="state">Sex:</span>Transgendor</div>
+                    <div class="profileState"><span class="state">Bio:</span>Jim Carrey</div>
+                </div>
+            </div>
+        </div>
+        <div class="statistic">
+            <div>
+                <h4 class="title">Динамика успеваемости</h4>
+                <p class="subTitle">Отображает изменение ситуации по учёбе</p>
+            </div>
+            <div class="profileDetails">
+                <img src="img/none_avatar.png" alt="Profile">
+                Рисуем график
+            </div>
+        </div>
+        <div class="balls">
+            <div>
+                <h4 class="title">Быллл....аава успеваемости</h4>
+                <p class="subTitle">Отображает изменение ситуации по учёбе</p>
+            </div>
+            <div class="profileDetails">
+                <img src="img/none_avatar.png" alt="Profile">
+                Рисуем график
+            </div>
+        </div>
+    </div>
+{% endblock %}

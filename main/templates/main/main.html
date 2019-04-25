@@ -1,19 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DigitEdu: Главная</title>
+{% extends "wrapper.html" %}
+
+
+{% block title %}
+    <title>Главная</title>
+{% endblock %}
+
+{% block content %}
+
+
     <h1>Главная</h1>
-    <a href=
-            {% if user.is_authenticated %}
-            "/cabinet"
-            {% else %}
-            "/login"
-            {% endif %}
-    >Личный кабинет</a>
+
     <h3>Какая-то инфографика</h3>
     <h4>Дата начала сессии {{ session.date }}</h4>
-</head>
-<body>
-</body>
-</html>
+
+    <button onclick="window.location.href=
+            {% if user.is_authenticated %}
+                "/cabinet"
+            {% else %}
+                "/login"
+            {% endif %}
+    " type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Личный кабинет
+    </button>
+
+    <a href=
+               {% if user.is_authenticated %}
+                   "/cabinet"
+               {% else %}
+                   "/login"
+               {% endif %}
+    >Личный кабинет</a>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="post">{% csrf_token %}
+                    <div class="modal-body">
+                        <p><input name="login">Логин</p>
+                        <p><input type="password" name="pswd">Пароль</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    {% block login %}
+    {% endblock %}
+
+{% endblock %}
