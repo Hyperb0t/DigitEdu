@@ -11,14 +11,14 @@
             <div class="profileDetails">
                 <h3 class="profileStatus">Студент</h3>
                 <div class="profileInfo">
-                    <div class="profileState"><span class="state">Name:</span>
+                    <div class="profileState"><span class="state">ФИО:</span>
                         {% if user.is_authenticated %}
                             {{ user.student.name }} {{ user.student.surname }}
                         {% else %}
                             Аноним
                         {% endif %}</div>
-                    <div class="profileState"><span class="state">Sex:</span>Transgendor</div>
-                    <div class="profileState"><span class="state">Bio:</span>Jim Carrey</div>
+                    <div class="profileState"><span class="state">Группа: </span>{{ user.student.group }}</div>
+                    <div class="profileState"><span class="state">Bio: </span>Jim Carrey</div>
                 </div>
             </div>
         </div>
