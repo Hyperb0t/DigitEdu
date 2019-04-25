@@ -5,7 +5,13 @@
             <button>Пройти опрос</button>
         </div>
         <div class="rightHeader">
-            <p class="name">Илон Маск</p>
+            <p class="name">
+                {% if user.is_authenticated %}
+                    {{ user.student.name }} {{ user.student.surname }}
+                {% else %}
+                    Аноним
+                {% endif %}
+            </p>
             <div class="headerProfile">
                 {% load staticfiles %}
                 <img src="{% static 'img/none_avatar.png' %}" alt="Profile">
