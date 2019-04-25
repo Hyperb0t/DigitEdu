@@ -24,8 +24,6 @@
             <button
                     {% if user.is_authenticated %}
                         onclick="window.location.href='/cabinet' "
-                    {% else %}
-                        data-toggle="modal" data-target="#exampleModal"
                     {% endif %}>
                 <p class="name">
                     {% if user.is_authenticated %}
