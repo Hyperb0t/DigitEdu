@@ -61,11 +61,12 @@
                     </div>
                 </div>
 
-                <a href={% if user.is_authenticated %}
-                    href="/logout"
-                {% else %}
-                   data-toggle="modal" data-target="#exampleModal"
-                {% endif %}">
+                <a href=
+                           {% if user.is_authenticated %}
+                               "/logout"
+                           {% else %}
+                               "#exampleModal"
+                           {% endif %}" data-toggle="modal">
                 <div class="main__profile block">
                     <div class="content">
                         <div class="title">Личный кабинет</div>
