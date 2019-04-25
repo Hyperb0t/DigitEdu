@@ -13,23 +13,14 @@
     <h3>Какая-то инфографика</h3>
     <h4>Дата начала сессии {{ session.date }}</h4>
 
-    <button onclick="window.location.href=
-            {% if user.is_authenticated %}
-                "/cabinet"
+    <button {% if user.is_authenticated %}
+                onclick="window.location.href='/cabinet' "
             {% else %}
-                "/login"
+                data-toggle="modal" data-target="#exampleModal"
             {% endif %}
-    " type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    type="button" class="btn btn-primary" >
     Личный кабинет
     </button>
-
-    <a href=
-               {% if user.is_authenticated %}
-                   "/cabinet"
-               {% else %}
-                   "/login"
-               {% endif %}
-    >Личный кабинет</a>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -41,7 +32,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="post">{% csrf_token %}
+                <form action="login" method="post">{% csrf_token %}
                     <div class="modal-body">
                         <p><input name="login">Логин</p>
                         <p><input type="password" name="pswd">Пароль</p>

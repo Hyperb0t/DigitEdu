@@ -32,9 +32,9 @@ def loginUser(request):
             login(request, user)
             return redirect('cabinet/')
         else:
-            return render(request, 'main/login.html')
+            return render(request, 'main/main.html')
     else:
-        return render(request, 'main/login.html')
+        return render(request, 'main/main.html')
 
 
 def logoutUser(request):
