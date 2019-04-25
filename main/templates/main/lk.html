@@ -15,7 +15,7 @@
             <div class="profileDetails">
                 <h3 class="profileStatus">Студент</h3>
                 <div class="profileInfo">
-                    <div class="profileState"><span class="state">ФИО:</span>
+                    <div class="profileState"><span class="state">Имя:</span>
                         {% if user.is_authenticated %}
                             {{ user.student.name }} {{ user.student.surname }}
                         {% else %}

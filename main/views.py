@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import datetime
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
@@ -10,7 +11,8 @@ def starter(request):
 
 
 def main(request):
-    return render(request, 'main/main.html', {"session": SessionBeginDate.objects.all()[0]})
+    return render(request, 'main/main.html', {"session": SessionBeginDate.objects.all()[0],
+                                              "time": datetime.datetime.now()})
 
 
 def cabinet(request):
