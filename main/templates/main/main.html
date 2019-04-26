@@ -34,22 +34,28 @@
                         </div>
                         <div class="right">
                             <ul class="subjects">
-                                <li class="subject">Мат. анализ</li>
+                                {% for lesson in user.student.group.subject_sorted_lesson_set.all%}
+                                    <li class="subject">{{ lesson.subject.name }}</li>
+                                {% endfor %}
+                                {% comment %}<li class="subject">Мат. анализ</li>
                                 <li class="subject">Геометрия</li>
                                 <li class="subject">Дискр. математика</li>
                                 <li class="subject">Информатика</li>
                                 <li class="subject">АИСД</li>
                                 <li class="subject">Английский</li>
-                                <li class="subject">Русский</li>
+                                <li class="subject">Русский</li>{% endcomment %}
                             </ul>
                             <ul class="counts">
-                                <li class="count">63 из 72</li>
+                                {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
+                                    <li class="count">{{ lesson.passed }} из {{ lesson.total }}</li>
+                                {% endfor %}
+                                {% comment %}<li class="count">63 из 72</li>
                                 <li class="count">63 из 72</li>
                                 <li class="count">63 из 72</li>
                                 <li class="count">78 из 90</li>
                                 <li class="count">63 из 72</li>
                                 <li class="count">63 из 72</li>
-                                <li class="count">30 из 36</li>
+                                <li class="count">30 из 36</li>{% endcomment %}
                             </ul>
                         </div>
                     </div>
