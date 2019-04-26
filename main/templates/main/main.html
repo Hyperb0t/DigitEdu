@@ -61,12 +61,12 @@
                     </div>
                 </div>
 
-                <a href=
+                <a data-toggle="modal" href=
                            {% if user.is_authenticated %}
-                               "/logout"
+                               "/cabinet"
                            {% else %}
                                "#exampleModal"
-                           {% endif %}" data-toggle="modal">
+                           {% endif %}">
                 <div class="main__profile block">
                     <div class="content">
                         <div class="title">Личный кабинет</div>
@@ -98,7 +98,7 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
-    <script src="{% static 'main/mainPage/js/script.js' %}js/script.js"></script>
+    <script src="{% static 'main/mainPage/js/script.js' %}"></script>
 
 {% endblock %}
 

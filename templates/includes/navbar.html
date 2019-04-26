@@ -9,7 +9,7 @@
         <div class="rightHeader">
             <button
                     {% if user.is_authenticated %}
-                        onclick="window.location.href='/logout' "
+                        onclick="window.location.href='/logout'"
                     {% else %}
                         data-toggle="modal" data-target="#exampleModal"
                     {% endif %}>
