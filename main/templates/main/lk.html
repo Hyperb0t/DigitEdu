@@ -12,6 +12,10 @@
 {% endblock %}
 
 {% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+    <script src="{% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
     <div class="mainContent">
         <div class="profileInformation">
             <div class="profilePicture">
@@ -37,7 +41,9 @@
                 <p class="subTitle">Отображает изменение ситуации по учёбе</p>
             </div>
             <div class="profileDetails">
-                <img src="{% static 'main/starter/images/chart.png' %}" alt="Profile">
+                {% comment %}<img src="{% static 'main/starter/images/chart.png' %}" alt="Profile">{% endcomment %}
+                <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
+                <script src=" {% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
             </div>
         </div>
         <div class="balls">

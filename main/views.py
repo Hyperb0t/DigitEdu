@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 import datetime
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
-from .models import SessionBeginDate
+from .models import SessionBeginDate, PointList
 
 
 def starter(request):
@@ -44,3 +44,14 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('/main')
+
+
+def graphData(request, datatype):
+    pointlist_data = []
+    pointlist_labels = []
+    for pointlist in PointList.objects.order_by("semester").filter(student__surname="Pupkin", subject__name="Algebra"):
+        pointlist_data.append(pointlist.point)
+        pointlist_labels.append(str(pointlist.semester) + "й семестр")
+    return JsonResponse({"datasets": [{"data": pointlist_data,
+                                       "label": "динамика успеваемости"}],
+                         "labels": pointlist_labels})

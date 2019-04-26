@@ -9,5 +9,6 @@ urlpatterns = [
     path('main', views.main),
     path('cabinet', views.cabinet),
     path('login', views.loginUser),
-    path('logout', views.logoutUser)
+    path('logout', views.logoutUser),
+    url(r'^graphrestapi/(?P<datatype>[a-z]*)/$', views.graphData)
 ]

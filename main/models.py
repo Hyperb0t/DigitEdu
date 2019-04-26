@@ -55,7 +55,7 @@ class PointList(models.Model):
     semester = models.PositiveSmallIntegerField("semester")
 
     class Meta:
-        unique_together = ("student", "subject")
+        unique_together = ("student", "subject", "semester")
 
     def __str__(self):
         return self.student.__str__() + " " + self.subject.name + " " + self.semester.__str__()
