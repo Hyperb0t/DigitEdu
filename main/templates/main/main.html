@@ -61,11 +61,11 @@
                     </div>
                 </div>
 
-                <a data-toggle="modal" href=
+                <a data-toggle="modal"
                            {% if user.is_authenticated %}
-                               "/cabinet"
+                               onclick="location.href='/cabinet';"
                            {% else %}
-                               "#exampleModal"
+                               href="#exampleModal"
                            {% endif %}">
                 <div class="main__profile block">
                     <div class="content">

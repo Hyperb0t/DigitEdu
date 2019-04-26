@@ -34,7 +34,7 @@ def loginUser(request):
         user = authenticate(request, username=loginn, password=password)
         if (user is not None):
             login(request, user)
-            return redirect('cabinet/')
+            return redirect('/cabinet')
         else:
             return redirect('/main')
     else:
