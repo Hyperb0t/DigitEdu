@@ -3,12 +3,18 @@
     <div class="wrapper">
         <div class="left">
             <div class="content">
-                <h1 id="logo">DigitEdu</h1>
+                <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
 <!--7                <p>Пройти опрос</p>-->
             </div>
         </div>
         <div class="right">
-                <div class="name content">Михаил Абрамский</div>
+                <div class="name content">
+                    {% if user.is_authenticated %}
+                    {{ user.student.name }} {{ user.student.surname }}
+                    {% else %}
+                    Аноним
+                    {% endif %}
+                </div>
                 <div class="avatar content">
                     <img src="{% static 'main/mainPage/images/avatar.png' %}" alt="">
                 </div>
