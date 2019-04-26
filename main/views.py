@@ -24,7 +24,7 @@ def cabinet(request):
         else:
             return render(request, 'main/lk.html', {"student": request.user.student})
     else:
-        return HttpResponseRedirect('/login')
+        return redirect('/login')
 
 
 def loginUser(request):
@@ -36,11 +36,11 @@ def loginUser(request):
             login(request, user)
             return redirect('cabinet/')
         else:
-            return render(request, 'main/main.html')
+            return redirect('/main')
     else:
-        return render(request, 'main/main.html')
+        return redirect('/main')
 
 
 def logoutUser(request):
     logout(request)
-    return HttpResponseRedirect('/main')
+    return redirect('/main')
