@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block style %}
+    <link rel="icon" href="{% static 'main/mainPage/images/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'main/mainPage/css/style.css' %}"/>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-    <link href="{% static 'main/mainPage/css/timer/base.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block navigation %}
@@ -61,18 +61,18 @@
                     </div>
                 </div>
 
-                <a data-toggle="modal"
-                        {% if user.is_authenticated %}
-                   onclick="location.href='/cabinet';"
-                        {% else %}
-                   href="#exampleModal"
-                        {% endif %}>
-                    <div class="main__profile block">
-                        <div class="content">
-                            <div class="title">Личный кабинет</div>
-                            <div class="subtitle">Анализ успеваемости и другая полезная информация в вашем профиле</div>
-                        </div>
+                <a data-toggle="modal" href=
+                           {% if user.is_authenticated %}
+                               "/cabinet"
+                           {% else %}
+                               "#exampleModal"
+                           {% endif %}">
+                <div class="main__profile block">
+                    <div class="content">
+                        <div class="title">Личный кабинет</div>
+                        <div class="subtitle">Анализ успеваемости и другая полезная информация в вашем профиле</div>
                     </div>
+                </div>
                 </a>
 
                 <div class="main__ratings block">
@@ -98,10 +98,8 @@
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
-    {% comment %}<script src="{% static 'main/mainPage/js/script.js' %}"></script>{% endcomment %}
-    <script type="application/javascript">$("#this_clock").countdownDigital({
-            dateTo: '{{ session.date|date:"c" }}'
-        });</script>
+    <script src="{% static 'main/mainPage/js/script.js' %}"></script>
+
 {% endblock %}
 
 <div class="mainContent">
