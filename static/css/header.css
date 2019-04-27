@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/************************************************************************************/
+/*************************************** header *************************************/
+/************************************************************************************/
+header {
+    font-family: "Open Sans", sans-serif;
+    height: 95px;
+    background-color: #4ab5c4;
+    color: #fff;
+}
+
+header .wrapper {
+    position: relative;
+    display: flex;
+}
+
+/*************************************** left ****************************************/
+header {
+    height: 95px;
+    background-color: #4ab5c4;
+    color: #fff;
+}
+
+header .wrapper {
+    position: relative;
+    display: flex;
+}
+
+/*************************************** left ****************************************/
+header .left {
+    width: 61%;
+    height: 95px;
+    /*background-color: #1f2448;*/
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    position: relative;
+}
+
+header .left .content {
+    display: flex;
+    padding-left: 0;
+}
+
+header .left #logo {
+}
+
+header .left #poll {
+    width: 100%;
+    margin-left: 120%;
+    color: white;
+}
+header h1 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: lighter;
+    letter-spacing: 3px;
+}
+/*************************************** right **************************************/
+header .right {
+    width: 39%;
+    display: inline-block;
+    /*background-color: #0e4804;*/
+    /*position: relative;*/
+}
+
+
+header .right .swiper {
+    position: relative;
+    float: right;
+    /*margin-left: 430px;*/
+}
+
+header .right .avatar {
+    position: relative;
+    float: right;
+    /*margin-left: 370px;*/
+}
+
+header .right .name {
+    position: relative;
+    float: right;
+    /*margin-left: 200px;*/
+}
+header .right .swiper img{
+    height: 10px;
+    width: 15px;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v16/mem8YaGs126MiZpBA-UFWJ0bbck.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
