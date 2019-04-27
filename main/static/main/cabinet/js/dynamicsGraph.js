@@ -1,14 +1,16 @@
-var graphData;
-$.ajax({
-    method: "GET",
-    url: "/graphrestapi/1_1",
-    success: drawDynGraph,
-    error: function (error_data) {
-        console.log("can't get data for dynamics graph");
-        console.log(error_data);
-        drawGraph({});
-    }
-});
+function displayStudentDynGraph(student, subject) {
+    var graphData;
+    $.ajax({
+        method: "GET",
+        url: "/graphrestapi/" + student +"_" + subject,
+        success: drawDynGraph,
+        error: function (error_data) {
+            console.log("can't get data for dynamics graph");
+            console.log(error_data);
+            drawGraph({});
+        }
+    });
+}
 
 function drawDynGraph(data) {
     var ctx = document.getElementById("dynamicsGraph");
