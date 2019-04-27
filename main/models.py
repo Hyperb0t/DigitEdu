@@ -32,6 +32,19 @@ class Student(models.Model):
     def semester_sorted_pointlist_set(self):
         return self.pointlist_set.order_by('semester')
 
+    def semester_sorted_medium_points(self):
+        i = 0
+        medium_points = []
+        while i < list(self.semester_sorted_pointlist_set())[-1].semester:
+            medium_points.append(0)
+            for pointlist in self.semester_sorted_pointlist_set().filter(semester=i+1):
+                medium_points[i]+=pointlist.point
+            medium_points[i] /= len(self.semester_sorted_pointlist_set().filter(semester=i+1))
+            i+=1
+        return medium_points
+
+
+
 
 
 class ResourceToStudent(models.Model):
