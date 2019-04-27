@@ -38,14 +38,10 @@
                             </ul>
                             <ul class="states_values">
                                 <li class="state_value name">
-                                    {% if user.is_authenticated %}
-                                        {{ user.student.name }} {{ user.student.surname }}
-                                    {% else %}
-                                        Аноним
-                                    {% endif %}
+                                    {{ student.name }} {{ student.surname }}
                                 </li>
                                 <li class="state_value stage">1</li>
-                                <li class="state_value group">{{ user.student.group }}</li>
+                                <li class="state_value group">{{ student.group }}</li>
                             </ul>
                         </div>
                     </div>
@@ -55,7 +51,7 @@
                         <div class="title">Динамика успеваемости</div>
                         <div class="subtitle">Отображает изменение ситуации по учёбе</div>
                         <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
-                        <script type="application/javascript">displayStudentDynGraph({{ user.student.pk }}, 1)</script>
+                        <script type="application/javascript">displayStudentDynGraph({{ student.pk }}, 1)</script>
                     </div>
                 </div>
                 <div class="main__points block">
@@ -63,7 +59,7 @@
                         <div class="title">Баллы за сессию</div>
                         <div class="subtitle">Итоговые баллы по минувшим экзаменам</div>
                         <canvas id="secondGraph" alt="Profile" width="400" height="400"></canvas>
-                        <script type="application/javascript">displayStudentSecondGraph({{ user.student.pk }})</script>
+                        <script type="application/javascript">displayStudentSecondGraph({{ student.pk }})</script>
                     </div>
                 </div>
                 <div class="wrapper">

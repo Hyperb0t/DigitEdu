@@ -1,14 +1,17 @@
-var graphData;
+function drawStudentLessonsGraph(student) {
+    var graphData;
 $.ajax({
     method: "GET",
-    url: "/graphrestapi/1",
+    url: "/graphrestapi/" + student,
     success: drawLessonsGraph,
     error: function (error_data) {
         console.log("can't get data for lessons graph");
         console.log(error_data);
-        drawGraph({});
+        drawLessonsGraph({});
     }
 });
+}
+
 
 function drawLessonsGraph(data) {
     var ctx = document.getElementById("lessonsGraph");

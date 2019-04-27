@@ -11,5 +11,9 @@ urlpatterns = [
     path('login', views.loginUser),
     path('logout', views.logoutUser),
     url(r'^graphrestapi/(?P<studentR>[0-9]*)_(?P<subjectR>[0-9]*)/$', views.pointGraphData),
-    url(r'^graphrestapi/(?P<groupR>[0-9]*)/$', views.lessonGraphData)
+    url(r'^graphrestapi/(?P<groupR>[0-9]*)/$', views.lessonGraphData),
+    url(r'^graphrestapi/last/(?P<studentR>[0-9]*)/$', views.lastSessionData),
+    path('graphrestapi/res/', views.resData),
+    url(r'cabinet/(?P<studentR>[0-9]*)/', views.adminStudentCabinet)
+
 ]
