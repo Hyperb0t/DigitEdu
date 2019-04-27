@@ -20,6 +20,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
         <script src="{% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
+        <script src="{% static 'main/cabinet/js/secondGraph.js' %}"></script>
         <div class="blocks">
             <div class="wrapper">
                 <div class="main__profile_info">
@@ -53,12 +54,16 @@
                     <div class="content">
                         <div class="title">Динамика успеваемости</div>
                         <div class="subtitle">Отображает изменение ситуации по учёбе</div>
+                        <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
+                        <script type="application/javascript">displayStudentDynGraph({{ user.student.pk }}, 1)</script>
                     </div>
                 </div>
                 <div class="main__points block">
                     <div class="content">
                         <div class="title">Баллы за сессию</div>
                         <div class="subtitle">Итоговые баллы по минувшим экзаменам</div>
+                        <canvas id="secondGraph" alt="Profile" width="400" height="400"></canvas>
+                        <script type="application/javascript">displayStudentSecondGraph({{ user.student.pk }})</script>
                     </div>
                 </div>
                 <div class="wrapper">
