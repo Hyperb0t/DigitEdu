@@ -2,12 +2,12 @@ function displayStudentSecondGraph(student) {
     var graphData;
     $.ajax({
         method: "GET",
-        url: "/graphrestapi/" + student + "_1",
+        url: "/graphrestapi/last/" + student,
         success: drawSecondGraph,
         error: function (error_data) {
             console.log("can't get data for second graph");
             console.log(error_data);
-            drawGraph({});
+            drawSecondGraph({});
         }
     });
 }
@@ -15,13 +15,14 @@ function displayStudentSecondGraph(student) {
 function drawSecondGraph(data) {
     var ctx = document.getElementById("secondGraph");
     var graph = new Chart(ctx, {
-        type: "line",
+        type: "bar",
         data: data,
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: 100
                     }
                 }]
             }

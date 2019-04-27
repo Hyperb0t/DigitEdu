@@ -7,7 +7,7 @@ function displayStudentDynGraph(student, subject) {
         error: function (error_data) {
             console.log("can't get data for dynamics graph");
             console.log(error_data);
-            drawGraph({});
+            drawDynGraph({});
         }
     });
 }
@@ -21,7 +21,8 @@ function drawDynGraph(data) {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        max: 100
                     }
                 }]
             }

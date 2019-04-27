@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 import datetime
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseForbidden
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
-from .models import SessionBeginDate, PointList, Lesson, Subject
+from .models import SessionBeginDate, PointList, Lesson, Subject, Student, AdditionalEduResource, ResourceToStudent
 
 
 def starter(request):
@@ -49,11 +49,21 @@ def logoutUser(request):
 def pointGraphData(request, studentR, subjectR):
     pointlist_data = []
     pointlist_labels = []
-    for pointlist in PointList.objects.order_by("semester").filter(student__id=studentR, subject__id=subjectR):
-        pointlist_data.append(pointlist.point)
-        pointlist_labels.append(str(pointlist.semester) + "й семестр")
+    subject_name = ""
+    if(subjectR != 0):
+        for pointlist in PointList.objects.order_by("semester").filter(student__id=studentR, subject__id=subjectR):
+            pointlist_data.append(pointlist.point)
+            pointlist_labels.append(str(pointlist.semester) + "й семестр")
+        subject_name = "баллы по предмету" + Subject.objects.get(pk=subjectR).name
+    else:
+        pointlist_data = Student.objects.get(pk=studentR).semester_sorted_medium_points()
+        i = 0
+        while i < len(pointlist_data):
+            pointlist_labels[i] = 1 + 'й семестр'
+        subject_name = "средний балл"
+
     return JsonResponse({"datasets": [{"data": pointlist_data,
-                                       "label": "баллы по " + Subject.objects.get(pk=subjectR).name}],
+                                       "label": subject_name}],
                          "labels": pointlist_labels})
 
 
@@ -75,3 +85,34 @@ def lessonGraphData(request, groupR):
                                        "label": "прослушано пар"}],
     "labels": lessons_labels
 })
+
+
+def lastSessionData(request, studentR):
+    sem = list(Student.objects.get(pk=studentR).semester_sorted_pointlist_set().all())[-1].semester;
+    points = Student.objects.get(pk=studentR).semester_sorted_pointlist_set().filter(semester=sem)
+    pointlist_data = []
+    pointlist_labels = []
+    for p in points:
+        pointlist_data.append(p.point)
+        pointlist_labels.append(p.subject.name)
+    return JsonResponse({"datasets": [{"data": pointlist_data,
+                                       "label": "баллы за последнюю сессию"}],
+                         "labels": pointlist_labels})
+
+
+def resData(request):
+    res_data = []
+    res_labels = []
+    for res in AdditionalEduResource.objects.all():
+        res_data.append(len(ResourceToStudent.objects.all().filter(resource=res)))
+        res_labels.append(res.name)
+    return JsonResponse({"datasets": [{"data": res_data,
+                                       "label": "использование дополнительных образовательных ресурсов"}],
+                         "labels": res_labels})
+
+
+def adminStudentCabinet(request, studentR):
+    if(request.user.is_superuser):
+        return render('main/lk.html', {"student":Student.objects.get(pk=studentR)})
+    else:
+        return HttpResponseForbidden()

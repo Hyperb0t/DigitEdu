@@ -20,6 +20,13 @@
 
 {% block content %}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/lessonsGraph.js' %}"></script>
+
     <main>
         <div class="blocks">
             <div class="wrapper">
@@ -29,9 +36,9 @@
                             <p class="title">Прослушано пар</p>
                         </div>
                         <div class="bottom">
-                            <div class="left">{% comment %}
-                            <img src="{% static 'main/mainPage/images/chart.png' %}" alt="" class="chart">{% endcomment %}
+                            <div class="left">
                                 <canvas id="lessonsGraph" alt=""></canvas>
+                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.pk }})</script>
                             </div>
                             <div class="right">
                                 <ul class="subjects">
@@ -105,14 +112,6 @@
 
     {% include 'includes/loginModal.html' %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
-    {% comment %}<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>{% endcomment %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
-    <script src="{% static 'main/mainPage/js/lessonsGraph.js' %}"></script>
-    {% comment %}<script src="{% static 'main/mainPage/js/script.js' %}"></script>{% endcomment %}
     <script type="application/javascript">$("#this_clock").countdownDigital({
         dateTo: '{{ session.date|date:"c" }}'
     });</script>
