@@ -286,3 +286,8 @@ footer .top h2 {
 footer .bottom p {
     font-size: 15px;
 }
+
+button {
+    border: none;
+    background: 0;
+}
