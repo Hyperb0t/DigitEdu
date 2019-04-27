@@ -22,11 +22,18 @@ function drawSecondGraph(data) {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        max: 100
+                        max: 100,
+                        fontColor: '#FFFFFF'
                     }
-                }]
+                }],
+                xAxes: [{ticks: { fontColor: '#FFFFFF' }}]
+            },
+            legend: {
+                labels: {
+                    fontColor: '#FFFFFF'
+                }
             }
         }
-    })
+    });
     ctx = graph;
 }

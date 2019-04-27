@@ -14,6 +14,5 @@ urlpatterns = [
     url(r'^graphrestapi/(?P<groupR>[0-9]*)/$', views.lessonGraphData),
     url(r'^graphrestapi/last/(?P<studentR>[0-9]*)/$', views.lastSessionData),
     path('graphrestapi/res/', views.resData),
-    url(r'cabinet/(?P<studentR>[0-9]*)/', views.adminStudentCabinet)
-
+    url(r'^cabinet/(?P<studentR>[0-9]+)/$', views.adminStudentCabinet)
 ]
