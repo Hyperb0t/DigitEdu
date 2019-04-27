@@ -2,16 +2,16 @@ var graphData;
 $.ajax({
     method: "GET",
     url: "/graphrestapi/a_a",
-    success: drawDynGraph,
+    success: drawSecondGraph,
     error: function (error_data) {
-        console.log("can't get data for dynamics graph");
+        console.log("can't get data for second graph");
         console.log(error_data);
         drawGraph({});
     }
 });
 
-function drawDynGraph(data) {
-    var ctx = document.getElementById("dynamicsGraph");
+function drawSecondGraph(data) {
+    var ctx = document.getElementById("secondGraph");
     var graph = new Chart(ctx, {
         type: "line",
         data: data,
