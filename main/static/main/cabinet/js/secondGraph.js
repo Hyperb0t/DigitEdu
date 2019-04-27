@@ -1,7 +1,7 @@
 var graphData;
 $.ajax({
     method: "GET",
-    url: "/graphrestapi/a_a",
+    url: "/graphrestapi/1_1",
     success: drawSecondGraph,
     error: function (error_data) {
         console.log("can't get data for second graph");

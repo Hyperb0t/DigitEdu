@@ -10,5 +10,6 @@ urlpatterns = [
     path('cabinet', views.cabinet),
     path('login', views.loginUser),
     path('logout', views.logoutUser),
-    url(r'^graphrestapi/()(?P<studentR>[a-z]*)_(?P<subjectR>[a-z]*)/$', views.pointGraphData)
+    url(r'^graphrestapi/(?P<studentR>[0-9]*)_(?P<subjectR>[0-9]*)/$', views.pointGraphData),
+    url(r'^graphrestapi/(?P<groupR>[0-9]*)/$', views.lessonGraphData)
 ]

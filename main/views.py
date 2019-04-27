@@ -3,7 +3,7 @@ import datetime
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import AnonymousUser
-from .models import SessionBeginDate, PointList, Lesson
+from .models import SessionBeginDate, PointList, Lesson, Subject
 
 
 def starter(request):
@@ -49,21 +49,29 @@ def logoutUser(request):
 def pointGraphData(request, studentR, subjectR):
     pointlist_data = []
     pointlist_labels = []
-    for pointlist in PointList.objects.order_by("semester").filter(student__surname="Pupkin", subject__name="Algebra"):
+    for pointlist in PointList.objects.order_by("semester").filter(student__id=studentR, subject__id=subjectR):
         pointlist_data.append(pointlist.point)
         pointlist_labels.append(str(pointlist.semester) + "й семестр")
     return JsonResponse({"datasets": [{"data": pointlist_data,
-                                       "label": "баллы по алгебре"}],
+                                       "label": "баллы по " + Subject.objects.get(pk=subjectR).name}],
                          "labels": pointlist_labels})
 
 
 
 def lessonGraphData(request, groupR):
-    lessons_data = [];
-    lessons_labels = [];
-    for lesson in Lesson.objects.filter(group__name=groupR):
-        lessons_data
-    return JsonResponse({"datasets": [{"data": lessons_data,
-                         "label": "прослушано пар"}],
+    lessons_total = []
+    lessons_passed = []
+    lessons_labels = []
+    colors_data = []
+    i = 1
+    for lesson in Lesson.objects.filter(subject__lesson__group_id=groupR):
+        lessons_total.append({"x": i, "y":lesson.total})
+        lessons_passed.append({"x": i, "y":lesson.passed})
+        lessons_labels.append(str(lesson.subject))
+        i+=1
+    return JsonResponse({"datasets": [{"data": lessons_total,"backgroundColor": '#4ab5c440',
+                         "label": "всего пар"},
+                                      {"data": lessons_passed, "backgroundColor": '#4ab5c470',
+                                       "label": "прослушано пар"}],
     "labels": lessons_labels
 })
