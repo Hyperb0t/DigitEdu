@@ -2,9 +2,12 @@
 
 {% load staticfiles %}
 
+{% block title %}
+    <title>Digit Edu | Личный кабинет</title>
+{% endblock %}
+
 {% block style %}
-    <link rel="stylesheet" href="{% static 'main/mainPage/css/style.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/cabinet/css/style.css' %}"/>
 {% endblock %}
 
 {% block navigation %}
@@ -12,50 +15,55 @@
 {% endblock %}
 
 {% block content %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
-    <script src="{% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
-    <div class="mainContent">
-        <div class="profileInformation">
-            <div class="profilePicture">
-                <img src="{% static 'img/none_avatar.png' %}" alt="Profile">
-            </div>
-            <div class="profileDetails">
-                <h3 class="profileStatus">Студент</h3>
-                <div class="profileInfo">
-                    <div class="profileState"><span class="state">Имя:</span>
-                        {% if user.is_authenticated %}
-                            {{ user.student.name }} {{ user.student.surname }}
-                        {% else %}
-                            Аноним
-                        {% endif %}</div>
-                    <div class="profileState"><span class="state">Группа: </span>{{ user.student.group }}</div>
-                    {% comment %}<div class="profileState"><span class="state">Bio: </span>Jim Carrey</div>{% endcomment %}
+    <main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+        <script src="{% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
+        <div class="blocks">
+            <div class="wrapper">
+                <div class="main__profile_info">
+                    <div class="profile_picture block">
+                        <img src="{% static 'main/cabinet/images/profile_avatar.png' %}" alt="Profile" class="center">
+                    </div>
+                    <div class="profile_details block">
+                        <h3 class="profile_status">Студент</h3>
+                        <div class="line"></div>
+                        <div class="profile_info">
+                            <ul class="states_keys">
+                                <li class="state_key name">Имя:</li>
+                                <li class="state_key stage">Курс:</li>
+                                <li class="state_key group">Группа:</li>
+                            </ul>
+                            <ul class="states_values">
+                                <li class="state_value name">
+                                    {% if user.is_authenticated %}
+                                        {{ user.student.name }} {{ user.student.surname }}
+                                    {% else %}
+                                        Аноним
+                                    {% endif %}
+                                </li>
+                                <li class="state_value stage">1</li>
+                                <li class="state_value group">{{ user.student.group }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__performance block">
+                    <div class="content">
+                        <div class="title">Динамика успеваемости</div>
+                        <div class="subtitle">Отображает изменение ситуации по учёбе</div>
+                    </div>
+                </div>
+                <div class="main__points block">
+                    <div class="content">
+                        <div class="title">Баллы за сессию</div>
+                        <div class="subtitle">Итоговые баллы по минувшим экзаменам</div>
+                    </div>
+                </div>
+                <div class="wrapper">
                 </div>
             </div>
         </div>
-        <div class="statistic">
-            <div>
-                <h4 class="title">Динамика успеваемости</h4>
-                <p class="subTitle">Отображает изменение ситуации по учёбе</p>
-            </div>
-            <div class="profileDetails">
-                {% comment %}<img src="{% static 'main/starter/images/chart.png' %}" alt="Profile">{% endcomment %}
-                <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
-                <script src=" {% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
-            </div>
-        </div>
-        <div class="balls">
-            <div>
-                <h4 class="title">Быллл....аава успеваемости</h4>
-                <p class="subTitle">Отображает изменение ситуации по учёбе</p>
-            </div>
-            <div class="profileDetails">{% comment %}
-                <img src="{% static 'main/starter/images/chart.png' %}" alt="Profile">{% endcomment %}
-                <canvas id="secondGraph" alt="Profile" width="400" height="400"></canvas>
-                <script src=" {% static 'main/cabinet/js/secondGraph.js' %}"></script>
-            </div>
-        </div>
-    </div>
+    </main>
 {% endblock %}

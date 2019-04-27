@@ -6,20 +6,12 @@
                 <button onclick="location.href='/main'">
                     <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
                 </button>
-                <!--7                <p>Пройти опрос</p>-->
+                <button onclick="location.href='#'">
+                    <p class="center" id="poll">Пройти опрос</p>
+                </button>
             </div>
         </div>
         <div class="right">
-            <div class="name content">
-                {% if user.is_authenticated %}
-                    {{ user.student.name }} {{ user.student.surname }}
-                {% else %}
-                    Аноним
-                {% endif %}
-            </div>
-            <div class="avatar content">
-                <img src="{% static 'main/mainPage/images/avatar.png' %}" alt="">
-            </div>
             <div class="swiper content dropdown open">
                 <div class="dropdown open">
                     <button type="button" id="dropdownMenuButton"
@@ -37,7 +29,16 @@
 
                     </div>
                 </div>
-
+            </div>
+            <div class="avatar content">
+                <img src="{% static 'main/mainPage/images/avatar.png' %}" alt="">
+            </div>
+            <div class="name content">
+                {% if user.is_authenticated %}
+                    {{ user.student.name }} {{ user.student.surname }}
+                {% else %}
+                    Аноним
+                {% endif %}
             </div>
         </div>
     </div>
