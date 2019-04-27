@@ -69,7 +69,7 @@
                         digit.appendTo(label);
                     });
                     if(defaults.labels) label.append('<span class="text">'+val+'</span>');
-                    label.append('<span class="dots"></span>');
+                    if(val!="секунд") label.append('<span class="dots"></span>');
                     label.appendTo(digit_holder);
                     amount++;
                 } 
