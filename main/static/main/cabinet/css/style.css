@@ -12,11 +12,6 @@ body {
     font-size: 17px;
 }
 
-a {
-    text-decoration: none;
-    color: #000;
-}
-
 .wrapper {
     width: 73.4%;
     /*margin: 0 auto;*/
@@ -87,7 +82,6 @@ header .left #logo {
 header .left #poll {
     width: 100%;
     margin-left: 120%;
-    color: white;
 }
 header h1 {
     color: #fff;
@@ -140,12 +134,8 @@ header .right .swiper img{
     border-radius: 5px;
     margin-bottom: 50px;
     /*color: #000;*/
-    transition: 0.5s;
+    transition: 2s;
     cursor: pointer;
-}
-
-.block:hover {
-    opacity: 0.8;
 }
 
 .content {
@@ -170,6 +160,25 @@ header .right .swiper img{
     font-size: 20px;
 }
 
+
+/* ..................................... hover ...................................*/
+.block:hover {
+    transition: 0.5s;
+
+    opacity: 0.8;
+}
+/* ..................................... clicked ...................................*/
+.block.clicked {
+    transition: 1s;
+
+    height: 500px;
+    background-color: #2b2a29;
+}
+
+.block.clicked .content {
+    transition: 2s;
+    /*display: none;*/
+}
 /************************************************************************************/
 /*************************************** main ***************************************/
 /************************************************************************************/
@@ -238,11 +247,23 @@ main {
     /*background: linear-gradient(135deg, #19d7c3, #28978e);*/
     background: url("../images/bg_perfomance.png") 0 no-repeat;
 }
+
+.main__performance.clicked {
+    background: linear-gradient(135deg, #19d7c3, #28978e)
+}
+
+canvas {
+    align-self: center;
+}
 /*************************************** points ********************************/
 .main__points {
     margin-bottom: 0;
     /*background: linear-gradient(135deg, #1780b0, #36708b);*/
     background: url("../images/bg_points.png") 0 no-repeat;
+}
+
+.main__points.clicked {
+    background: linear-gradient(135deg, #1780b0, #36708b);
 }
 
 
