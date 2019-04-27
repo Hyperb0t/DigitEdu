@@ -198,8 +198,9 @@ main {
 }
 
 .main__timeline .bottom .left {
+    margin-left: 3%;
     width: 50%;
-    height: 490px;
+    height: 390px;
 }
 
 .main__timeline .bottom .left .chart {
@@ -210,7 +211,7 @@ main {
 .main__timeline .bottom .right {
     margin-left: 5%;
     width: 50%;
-    height: 500px;
+    height: 390px;
     /*background-color: #15343d;*/
     display: flex;
 }
