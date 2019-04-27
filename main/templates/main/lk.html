@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block style %}
-    <link rel="stylesheet" href="{% static 'main/cabinet/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/cabinet/css/style2.css' %}"/>
 {% endblock %}
 
 {% block navigation %}
@@ -50,21 +50,28 @@
                     <div class="content">
                         <div class="title">Динамика успеваемости</div>
                         <div class="subtitle">Отображает изменение ситуации по учёбе</div>
-                        <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
-                        <script type="application/javascript">displayStudentDynGraph({{ student.pk }}, 1)</script>
+                        <div class="chart" style="display:none">
+                            <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
+                            <script type="application/javascript">displayStudentDynGraph({{ student.pk }}, 1)</script>
+                        </div>
                     </div>
                 </div>
                 <div class="main__points block">
                     <div class="content">
                         <div class="title">Баллы за сессию</div>
                         <div class="subtitle">Итоговые баллы по минувшим экзаменам</div>
-                        <canvas id="secondGraph" alt="Profile" width="400" height="400"></canvas>
-                        <script type="application/javascript">displayStudentSecondGraph({{ student.pk }})</script>
+                        <div class="chart" style="display:none">
+                            <canvas id="secondGraph" alt="Profile" width="400" height="400"></canvas>
+                            <script type="application/javascript">displayStudentSecondGraph({{ student.pk }})</script>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper">
                 </div>
             </div>
         </div>
+
+        <!-- JavaScript Includes -->
+        <script src="{% static 'main/cabinet/js/script.js' %}"></script>
     </main>
 {% endblock %}
