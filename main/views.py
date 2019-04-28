@@ -11,9 +11,10 @@ def starter(request):
 
 
 def main(request):
-    date1 = SessionBeginDate.objects.all()[0].date
-    # if SessionBeginDate.DoesNotExist():
-    #     date1 = datetime.datetime.now()
+    if SessionBeginDate.DoesNotExist():
+        date1 = datetime.datetime.now()
+    else:
+        date1 = SessionBeginDate.objects.all()[0].date
     return render(request, 'main/main.html', {"date": date1})
 
 

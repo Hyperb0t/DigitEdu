@@ -1,5 +1,6 @@
 from .models import Student, Subject, PointList, Lesson, AdditionalEduResource, ResourceToStudent
 from django.http import JsonResponse
+import sys
 
 def pointGraphDataJson(request, studentR, subjectR):
     pointlist_data = []
