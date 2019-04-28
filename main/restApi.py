@@ -26,9 +26,8 @@ def lessonGraphDataJson(request, groupR):
     lessons_total = []
     lessons_passed = []
     lessons_labels = []
-    colors_data = []
     i = 1
-    for lesson in Lesson.objects.filter(subject__lesson__group_id=groupR):
+    for lesson in Lesson.objects.filter(group__id=groupR):
         lessons_total.append({"x": i, "y":lesson.total})
         lessons_passed.append({"x": i, "y":lesson.passed})
         lessons_labels.append(str(lesson.subject))
@@ -64,5 +63,15 @@ def resDataJson(request):
                                        "label": "использование дополнительных образовательных ресурсов"}],
                          "labels": res_labels})
 
-def studentsTopDataJson(request):
-    return JsonResponse()
+def studentsTopDataJson(request, subjectR):
+    last_sem = list(PointList.objects.filter(subject=Subject.objects.get(pk=subjectR)).order_by('semester'))[-1].semester
+    points = PointList.objects.filter(subject=Subject.objects.get(pk=subjectR), semester=last_sem).order_by('point').reverse()
+    top_data = []
+    top_labels = []
+    for p in points:
+        top_data.append(p.point)
+        top_labels.append(str(p.student))
+    label = "Топ лучших студентов по предмету " + Subject.objects.get(pk=subjectR).name + " за последний семестр"
+    return JsonResponse({"datasets": [{"data": top_data,
+                                       "label": label}],
+                         "labels": top_labels})

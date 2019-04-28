@@ -99,15 +99,6 @@
     {% include 'includes/loginModal.html' %}
 
     <script type="application/javascript">$("#this_clock").countdownDigital({
-        dateTo: '{{ session.date|date:"c" }}'
+        dateTo: '{{ date|date:"c" }}'
     });</script>
 {% endblock %}
-
-<div class="mainContent">
-    <h1>Главная</h1>
-
-    <h3>Какая-то инфографика</h3>
-    <h4>Сессия начнется {{ session.date }}</h4>
-    <h4>Время: {{ time }}</h4>
-    <h4>До начала сессии: {{ timediff }}</h4>
-</div>

@@ -11,10 +11,10 @@ def starter(request):
 
 
 def main(request):
-    timediff = (SessionBeginDate.objects.all()[0].date - datetime.datetime.now())
-    return render(request, 'main/main.html', {"session": SessionBeginDate.objects.all()[0],
-                                              "time": datetime.datetime.now(),
-                                              "timediff": timediff})
+    date1 = SessionBeginDate.objects.all()[0].date
+    # if SessionBeginDate.DoesNotExist():
+    #     date1 = datetime.datetime.now()
+    return render(request, 'main/main.html', {"date": date1})
 
 
 def cabinet(request):
@@ -66,3 +66,7 @@ def adminStudentCabinet(request, studentR):
         return render(request, 'main/lk.html', {"student": Student.objects.get(pk=studentR)})
     else:
         return HttpResponseForbidden("You are not admin")
+
+
+def studentsTopData(request, subjectR):
+    return restApi.studentsTopDataJson(request, subjectR)

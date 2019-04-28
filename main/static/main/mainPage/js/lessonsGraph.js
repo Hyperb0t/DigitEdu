@@ -1,8 +1,8 @@
-function drawStudentLessonsGraph(student) {
+function drawStudentLessonsGraph(group) {
     var graphData;
     $.ajax({
         method: "GET",
-        url: "/graphrestapi/" + student,
+        url: "/graphrestapi/" + group,
         success: drawLessonsGraph,
         error: function (error_data) {
             console.log("can't get data for lessons graph");
