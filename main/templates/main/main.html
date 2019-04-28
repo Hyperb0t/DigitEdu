@@ -20,6 +20,8 @@
 
 {% block content %}
 
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
@@ -82,13 +84,34 @@
                     <div class="content">
                         <div class="title">Рейтинги</div>
                         <div class="subtitle">Рейтинг студентов по результатам последней сессии</div>
+                        <div class="chart_block">
+                            <div class="theme_slider">
+                                <div class="previous"><</div>
+                                <div class="cur_theme">Алгебра и Геометрия</div>
+                                <div class="next">></div>
+                            </div>
+                            <div class="chart">
+                                <img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="main__services block">
                     <div class="content">
                         <div class="title">Сервисы</div>
-                        <div class="subtitle">Наиболее используемые сервисы для подготовки / развития / времяпровождения
+                        <div class="subtitle">Наиболее используемые сервисы для подготовки / развития /
+                            времяпровождения
+                        </div>
+                        <div class="chart_block">
+                            <!--<div class="theme_slider">
+                                <div class="previous"><</div>
+                                <div class="cur_theme">Алгебра и Геометрия</div>
+                                <div class="next">></div>
+                            </div>-->
+                            <div class="chart">
+                                <img src="{% static 'main/mainPage/images/chart_services.png' %}" alt="chart_services">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,4 +124,6 @@
     <script type="application/javascript">$("#this_clock").countdownDigital({
         dateTo: '{{ date|date:"c" }}'
     });</script>
+    <script src="{% static 'main/mainPage/js/script.js' %}"></script>
+
 {% endblock %}

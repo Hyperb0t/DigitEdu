@@ -64,7 +64,7 @@ def resData(request):
 
 def adminStudentCabinet(request, studentR):
     if(request.user.is_superuser):
-        return render(request, 'main/lk.html', {"student": Student.objects.get(pk=studentR)})
+        return render(request, 'main/lkA.html', {"student": Student.objects.get(pk=studentR)})
     else:
         return HttpResponseForbidden("You are not admin")
 

@@ -134,13 +134,13 @@ header .right .swiper img{
     border-radius: 5px;
     margin-bottom: 50px;
     /*color: #000;*/
-    transition: 2s;
+    transition: 1.5s;
     cursor: pointer;
 }
 
+/* ..................................... content ...................................*/
 .content {
     color: #ffffff;
-
 
     margin: 0;
     padding-left: 2.3%;
@@ -160,24 +160,41 @@ header .right .swiper img{
     font-size: 20px;
 }
 
-
+.block .content .chart_block {
+    display: none;
+}
 /* ..................................... hover ...................................*/
 .block:hover {
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 
     opacity: 0.8;
 }
 /* ..................................... clicked ...................................*/
 .block.clicked {
-    transition: 1s;
+    transition: 1.5s;
 
-    height: 500px;
+    /*height: 900px;*/
+    height: 600px;
     background-color: #2b2a29;
 }
 
 .block.clicked .content {
-    transition: 2s;
-    /*display: none;*/
+    /*transition: 2s;*/
+
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    top: 30px;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+
+.block.clicked:hover {
+    transform: scale(1.01);
+    opacity: 1;
 }
 /************************************************************************************/
 /*************************************** main ***************************************/
@@ -188,6 +205,10 @@ main {
     width: 100%;
     /*height: 1000px;*/
     background-color: #e9ebee;
+}
+
+.chart img {
+    height: 400px;
 }
 /*************************************** profile_info *******************************/
 .main__profile_info {
@@ -249,11 +270,8 @@ main {
 }
 
 .main__performance.clicked {
-    background: linear-gradient(135deg, #19d7c3, #28978e)
-}
-
-canvas {
-    align-self: center;
+    /*background: linear-gradient(135deg, #19d7c3, #28978e)*/
+    background: url("../images/bg_perfomance_clicked.png") 0 no-repeat;
 }
 /*************************************** points ********************************/
 .main__points {
@@ -263,7 +281,8 @@ canvas {
 }
 
 .main__points.clicked {
-    background: linear-gradient(135deg, #1780b0, #36708b);
+    /*background: linear-gradient(135deg, #1780b0, #36708b);*/
+    background: url("../images/bg_points_clicked.png") 0 no-repeat;
 }
 
 
