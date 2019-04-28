@@ -45,25 +45,11 @@
                                     {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
                                         <li class="subject">{{ lesson.subject.name }}</li>
                                     {% endfor %}
-                                    {% comment %}<li class="subject">Мат. анализ</li>
-                                <li class="subject">Геометрия</li>
-                                <li class="subject">Дискр. математика</li>
-                                <li class="subject">Информатика</li>
-                                <li class="subject">АИСД</li>
-                                <li class="subject">Английский</li>
-                                <li class="subject">Русский</li>{% endcomment %}
                                 </ul>
                                 <ul class="counts">
                                     {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
                                         <li class="count">{{ lesson.passed }} из {{ lesson.total }}</li>
                                     {% endfor %}
-                                    {% comment %}<li class="count">63 из 72</li>
-                                <li class="count">63 из 72</li>
-                                <li class="count">63 из 72</li>
-                                <li class="count">78 из 90</li>
-                                <li class="count">63 из 72</li>
-                                <li class="count">63 из 72</li>
-                                <li class="count">30 из 36</li>{% endcomment %}
                                 </ul>
                             </div>
                         </div>
@@ -113,15 +99,6 @@
     {% include 'includes/loginModal.html' %}
 
     <script type="application/javascript">$("#this_clock").countdownDigital({
-        dateTo: '{{ session.date|date:"c" }}'
+        dateTo: '{{ date|date:"c" }}'
     });</script>
 {% endblock %}
-
-<div class="mainContent">
-    <h1>Главная</h1>
-
-    <h3>Какая-то инфографика</h3>
-    <h4>Сессия начнется {{ session.date }}</h4>
-    <h4>Время: {{ time }}</h4>
-    <h4>До начала сессии: {{ timediff }}</h4>
-</div>
