@@ -127,6 +127,7 @@ a {
     left: 50%;
     -ms-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
+    width: 800px;
 }
 
 
@@ -286,7 +287,7 @@ main {
 }
 
 .main__ratings.clicked .chart {
-    height: 47px;
+    height: 800px;
     width: 100%;
 
     /*background-color: #3a2559;*/

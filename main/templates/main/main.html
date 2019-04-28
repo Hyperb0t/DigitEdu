@@ -42,7 +42,7 @@
                         <div class="bottom">
                             <div class="onlyChart">
                                 <canvas id="lessonsGraph" alt=""></canvas>
-                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.pk }})</script>
+                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.group.pk }})</script>
                             </div>
 
                             <!--<div class="left">
@@ -154,7 +154,7 @@
                                     </div>
                                 </div>{% endcomment %}
                                 <!--<img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">-->
-                                <canvas id="topGraph" width="400" height="400"></canvas>
+                                <canvas id="topGraph" width="800" height="570"></canvas>
                                 <script type="application/javascript">drawCallTopGraph(1)</script>
                             </div>
                         </div>

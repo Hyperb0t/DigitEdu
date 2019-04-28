@@ -24,15 +24,16 @@ function drawTopGraph(data) {
                     ticks: {
                         beginAtZero: true,
                         max: 100,
-                        fontColor: '#FFFFFF'
+                        fontColor: '#FFFFFF',
+                        fontSize: 16
                     }
                 }],
-                yAxes: [{ticks: { fontColor: '#FFFFFF' }}]
+                yAxes: [{ticks: { fontColor: '#FFFFFF', fontSize: 18 }}]
             },
             legend: {
                 labels: {
                     fontColor: '#FFFFFF',
-                    fontSize: 15
+                    fontSize: 14
                 }
             }
         }}
