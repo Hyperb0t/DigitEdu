@@ -20,7 +20,8 @@ def main(request):
 def cabinet(request):
     if (request.user.is_authenticated):
         if (request.user.is_superuser):
-            return HttpResponseRedirect('/admin')
+            return render(request, 'main/lkA.html')
+            # return HttpResponseRedirect('/admin')
         else:
             return render(request, 'main/lk.html', {"student": request.user.student})
     else:

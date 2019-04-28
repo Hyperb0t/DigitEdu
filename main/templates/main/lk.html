@@ -23,12 +23,20 @@
         <script src="{% static 'main/cabinet/js/secondGraph.js' %}"></script>
         <div class="blocks">
             <div class="wrapper">
+                {% block additionalContent %}
+                {% endblock %}
                 <div class="main__profile_info">
                     <div class="profile_picture block">
                         <img src="{% static 'main/cabinet/images/profile_avatar.png' %}" alt="Profile" class="center">
                     </div>
                     <div class="profile_details block">
-                        <h3 class="profile_status">Студент</h3>
+                        <h3 class="profile_status">
+                            {% if user.is_superuser %}
+                                Деканат
+                            {% else %}
+                                Студент
+                            {% endif %}
+                        </h3>
                         <div class="line"></div>
                         <div class="profile_info">
                             <ul class="states_keys">

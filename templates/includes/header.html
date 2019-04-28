@@ -37,9 +37,13 @@
             </div>
             <div class="name content">
                 {% if user.is_authenticated %}
-                    {{ user.student.name }} {{ user.student.surname }}
+                    {% if user.is_superuser %}
+                        Деканат
+                    {% else %}
+                        {{ user.student.name }} {{ user.student.surname }}
+                    {% endif %}
                 {% else %}
-                    Неавторизованный пользователь
+                Неавторизованный пользователь
                 {% endif %}
             </div>
         </div>
