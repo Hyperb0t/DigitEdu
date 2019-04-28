@@ -21,11 +21,13 @@ function drawLessonsGraph(data) {
         options: {
             scales: {
                 xAxes: [{
-                    stacked: true
+                    stacked: true,
+                    ticks: {fontSize: 18}
                 }],
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        fontSize: 16
                     }
                 }]
             }
