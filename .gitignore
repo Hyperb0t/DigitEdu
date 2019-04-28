@@ -3,3 +3,4 @@ DigitEdu/__pycache__/*
 main/migrations/__pycache__/*
 *.pyc
 db.sqlite3
+dbbigsqlite3
