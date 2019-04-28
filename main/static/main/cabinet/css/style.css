@@ -191,7 +191,6 @@ main {
 }
 /*************************************** profile_info *******************************/
 .main__profile_info {
-    margin-top: 4%;
     display: flex;
     position: relative;
 }

@@ -30,7 +30,7 @@
     <main>
         <div class="blocks">
             <div class="wrapper">
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and not user.is_superuser %}
                     <div class="main__timeline block">
                         <div class="top">
                             <p class="title">Прослушано пар</p>
