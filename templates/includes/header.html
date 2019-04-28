@@ -6,6 +6,11 @@
                 <button onclick="location.href='/main'">
                     <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
                 </button>
+                {% if user.is_authenticated %}
+                    <button onclick="location.href='#'">
+                        <p class="center" id="poll">Пройти опрос</p>
+                    </button>
+                {% endif %}
                 <button onclick="location.href='#'">
                     <p class="center" id="poll">Пройти опрос</p>
                 </button>
@@ -37,7 +42,7 @@
                 {% if user.is_authenticated %}
                     {{ user.student.name }} {{ user.student.surname }}
                 {% else %}
-                    Аноним
+                    Неавторизованный пользователь
                 {% endif %}
             </div>
         </div>
