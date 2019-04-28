@@ -1,27 +1,45 @@
-<div class="modal fade survey" id="survey" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Какими образовательными ресурсами вы пользуетесь</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <form>
-      <div class="modal-body">
-        <div class="custom-control custom-radio">
-          {% for r in resources %}
-              <r><input type="radio" id="radio{{ r.pk }}"></r>
-              <r><label for="radio{{ r.pk }}">{{ r.name }}</label></r>
-              <br/>
-          {% endfor %}
+<div class="modal fade center " id="survey" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Какими ресурсамы вы чаще всего пользуетесь</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                           value="option1">
+                    <label class="form-check-label option" for="exampleRadios2">
+                        Google
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                           value="option1">
+                    <label class="form-check-label option" for="exampleRadios2">
+                        Не Google
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                           value="option1">
+                    <label class="form-check-label option" for="exampleRadios2">
+                        JavaRush
+                    </label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Отправить</button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-        <button type="submit" class="btn btn-primary">Отправить</button>
-      </div>
-        </form>
+>>>>>>> 63d41e173c26fd215c56bf52a90d5485d062604b
     </div>
-  </div>
 </div>
