@@ -37,7 +37,6 @@ $(".block").click(function(){
 
 function touch(fullClassName) {
     let className = "." + fullClassName.split(" ")[0];
-    console.log(className);
     $(className).toggleClass("clicked");
 
     if (fullClassName.includes("clicked")) {

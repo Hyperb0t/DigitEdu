@@ -1,4 +1,5 @@
-function drawCallTopGraph(subjectR) {
+function drawCallTopGraph() {
+    subjectR = document.getElementById("topGraph").getAttribute("subjectId")
     var graphData;
 $.ajax({
     method: "GET",

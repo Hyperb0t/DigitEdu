@@ -49,7 +49,8 @@ class Student(models.Model):
 
 class ResourceToStudent(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
-    resource = models.ForeignKey(AdditionalEduResource, on_delete=models.SET_DEFAULT, default= "")
+    resource = models.ForeignKey(AdditionalEduResource, on_delete=models.SET_DEFAULT, default=
+                                 AdditionalEduResource.objects.all()[0])
 
     def __str__(self):
         return str(self.student) + " " + str(self.resource)

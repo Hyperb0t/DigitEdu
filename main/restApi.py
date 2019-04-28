@@ -77,7 +77,8 @@ def studentsTopDataJson(request, subjectR):
     top_colors = []
     for p in points:
         top_data.append(p.point)
-        top_labels.append(str(p.student))
+        top_labels.append(str(p.student) + (" (Вы)" if not request.user.is_superuser and not request.user.is_staff and
+                                                      request.user.is_authenticated and p.student == request.user.student else ""))
         top_colors.append('#58918964')
     label = "Топ лучших студентов по предмету " + Subject.objects.get(pk=subjectR).name + " за последний семестр"
     return JsonResponse({"datasets": [{"data": top_data[:12],
