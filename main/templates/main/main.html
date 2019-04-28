@@ -38,10 +38,16 @@
                             <p class="title">Прослушано пар</p>
                         </div>
                         <div class="bottom">
-                            <div class="left">
+                            <div class="onlyChart">
                                 <canvas id="lessonsGraph" alt=""></canvas>
                                 <script type="application/javascript">drawStudentLessonsGraph({{ user.student.pk }})</script>
                             </div>
+
+                            <!--<div class="left">
+                            <canvas id="lessonsGraph" alt=""></canvas>
+                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.pk }})</script>
+
+                                </div>
                             <div class="right">
                                 <ul class="subjects">
                                     {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
@@ -53,7 +59,7 @@
                                         <li class="count">{{ lesson.passed }} из {{ lesson.total }}</li>
                                     {% endfor %}
                                 </ul>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 {% endif %}
