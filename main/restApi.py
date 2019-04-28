@@ -59,7 +59,7 @@ def resDataJson(request):
     res_labels = []
     res_colors = []
     for res in AdditionalEduResource.objects.all():
-        res_data.append(len(ResourceToStudent.objects.all().filter(resource=res)))
+        res_data.append(len(list(ResourceToStudent.objects.all().filter(resource=res))))
         res_labels.append(res.name)
         col = "#{:06x}".format(random.randint(0, 0xFFFFFF))
         col += '32'

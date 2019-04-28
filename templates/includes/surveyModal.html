@@ -8,38 +8,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+        <form action="survey" method="post"> {% csrf_token %}
             <div class="modal-body">
-
+                {% for r in resources %}
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                           value="option1">
-                    <label class="form-check-label option" for="exampleRadios2">
-                        Google
+                    <input class="form-check-input" type="radio" name="radios" id="radio{{ r.pk }}"
+                           value="{{ r.pk }}">
+                    <label class="form-check-label option" for="exampleRadios{{ r.pk }}">
+                        {{ r.name }}
                     </label>
                 </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                           value="option1">
-                    <label class="form-check-label option" for="exampleRadios2">
-                        Не Google
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                           value="option1">
-                    <label class="form-check-label option" for="exampleRadios2">
-                        JavaRush
-                    </label>
-                </div>
-
+                {% endfor %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Отправить</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
             </div>
+        </form>
         </div>
->>>>>>> 63d41e173c26fd215c56bf52a90d5485d062604b
     </div>
 </div>

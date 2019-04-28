@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 import datetime
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import SessionBeginDate, Student, AdditionalEduResource
+from .models import SessionBeginDate, Student, AdditionalEduResource, ResourceToStudent
 from . import restApi
 
 
@@ -77,3 +77,11 @@ def studentsTopData(request, subjectR):
 
 def surnameSearchData(request, surnameR):
     return restApi.surnameSearchJson(request, surnameR)
+
+def survey(request):
+    if request.method == 'POST':
+        if not (request.user.is_superuser or request.user.is_staff):
+            r = request.user.student.resourcetostudent
+            r.resource = AdditionalEduResource.objects.get(pk=request.POST['radios'])
+            r.save()
+    return redirect('/main')
