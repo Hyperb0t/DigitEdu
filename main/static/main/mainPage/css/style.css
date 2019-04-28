@@ -161,6 +161,10 @@ main {
     display: flex;
 }
 
+.main__timeline .bottom .onlyChart {
+    margin: 3%;
+    width: 100%;
+}
 
 .main__timeline .bottom .right .subjects {
     width: 50%;
