@@ -29,6 +29,7 @@
     <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
     <script src="{% static 'main/mainPage/js/lessonsGraph.js' %}"></script>
     <script src="{% static 'main/mainPage/js/resGraph.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/topGraph.js' %}"></script>
 
     <main>
         <div class="blocks">
@@ -98,7 +99,7 @@
                                 <div class="next">></div>
                             </div>
                             <div class="chart">
-                                <div class="s1">
+                                {% comment %}<div class="s1">
                                     <div class="stud-block">
                                         <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
                                              class="stud-avatar">
@@ -147,12 +148,14 @@
                                 <div class="s7">
                                     <div class="stud-block">
                                         <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
+                                             class="stud-avatar">auth_user
                                         <p class="stud-name">Name</p>
                                         <p class="stud-points">90</p>
                                     </div>
-                                </div>
+                                </div>{% endcomment %}
                                 <!--<img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">-->
+                                <canvas id="topGraph" width="400" height="400"></canvas>
+                                <script type="application/javascript">drawCallTopGraph(1)</script>
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 import datetime
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import SessionBeginDate, Student, AdditionalEduResource, ResourceToStudent
+from .models import SessionBeginDate, Student, AdditionalEduResource, PointList
+
 from . import restApi
 
 

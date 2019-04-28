@@ -74,13 +74,16 @@ def studentsTopDataJson(request, subjectR):
     points = PointList.objects.filter(subject=Subject.objects.get(pk=subjectR), semester=last_sem).order_by('point').reverse()
     top_data = []
     top_labels = []
+    top_colors = []
     for p in points:
         top_data.append(p.point)
         top_labels.append(str(p.student))
+        top_colors.append('#58918964')
     label = "Топ лучших студентов по предмету " + Subject.objects.get(pk=subjectR).name + " за последний семестр"
-    return JsonResponse({"datasets": [{"data": top_data,
-                                       "label": label}],
-                         "labels": top_labels})
+    return JsonResponse({"datasets": [{"data": top_data[:12],
+                                       "label": label,
+                                       "backgroundColor": top_colors}],
+                         "labels": top_labels[:12]})
 
 def surnameSearchJson(request, surnameR):
     studs = []
