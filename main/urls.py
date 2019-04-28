@@ -16,5 +16,5 @@ urlpatterns = [
     path('graphrestapi/res/', views.resData),
     url(r'^cabinet/(?P<studentR>[0-9]+)/$', views.adminStudentCabinet),
     url(r'^graphrestapi/top/(?P<subjectR>[0-9]+)/$', views.studentsTopData),
-    url(r'^graphrestapi/search/(?P<surnameR>[a-z]+)$', views.surnameSearchData)
+    url(r'^graphrestapi/search/(?P<surnameR>[^$]+)$', views.surnameSearchData)
 ]
