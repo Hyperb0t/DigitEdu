@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 import datetime
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from .models import SessionBeginDate,Student
 from . import restApi
@@ -71,3 +71,6 @@ def adminStudentCabinet(request, studentR):
 
 def studentsTopData(request, subjectR):
     return restApi.studentsTopDataJson(request, subjectR)
+
+def surnameSearchData(request, surnameR):
+    return restApi.surnameSearchJson(request, surnameR)

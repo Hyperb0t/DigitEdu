@@ -1,11 +1,13 @@
 {% extends 'main/lk.html' %}
 
+{% load staticfiles %}
 {% block additionalContent %}
     <div class="input-group mb-3" style="height: 90px; padding-bottom: 3%">
-        <input type="text" class="form-control" placeholder="Введите имя студента" aria-label="Recipient's username"
-               aria-describedby="basic-addon2" style="height: 60px">
+        <input type="text" class="form-control" placeholder="Введите фамилию студента" aria-label="Recipient's username"
+               aria-describedby="basic-addon2" style="height: 60px" id="searchBox" oninput="getStudList()" data-toggle="tooltip">
         <div class="input-group-append">
-            <button class="btn btn-info blue" type="button">Найти студента</button>
+            <script type="application/javascript" src="{% static 'main/lkA/js/search.js' %}"></script>
+            <button class="btn btn-info blue" type="button" onclick="redirectToStudCabinet()" id="searchButton">Найти студента</button>
         </div>
     </div>
 {% endblock %}

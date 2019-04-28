@@ -75,3 +75,10 @@ def studentsTopDataJson(request, subjectR):
     return JsonResponse({"datasets": [{"data": top_data,
                                        "label": label}],
                          "labels": top_labels})
+
+def surnameSearchJson(request, surnameR):
+    studs = []
+    for stud in Student.objects.filter(surname__contains=surnameR):
+        st = {"name": stud.name, "surname": stud.surname, "id": stud.pk}
+        studs.append(st)
+    return JsonResponse({"students": studs})
