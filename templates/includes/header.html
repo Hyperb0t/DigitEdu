@@ -7,9 +7,15 @@
                     <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
                 </button>
                 {% if user.is_authenticated %}
-                    <button onclick="location.href='#'">
-                        <p class="center" id="poll">Пройти опрос</p>
-                    </button>
+                    {% if user.is_superuser %}
+                        <button onclick="location.href='/admin'">
+                            <p class="center" id="poll">Редактировать БД</p>
+                        </button>
+                    {% else %}
+                        <button onclick="location.href='#'">
+                            <p class="center" id="poll">Пройти опрос</p>
+                        </button>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
@@ -43,7 +49,7 @@
                         {{ user.student.name }} {{ user.student.surname }}
                     {% endif %}
                 {% else %}
-                Неавторизованный пользователь
+                    Неавторизованный пользователь
                 {% endif %}
             </div>
         </div>
