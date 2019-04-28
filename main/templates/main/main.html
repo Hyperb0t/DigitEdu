@@ -28,6 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
     <script src="{% static 'main/mainPage/js/lessonsGraph.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/resGraph.js' %}"></script>
 
     <main>
         <div class="blocks">
@@ -110,7 +111,8 @@
                                 <div class="next">></div>
                             </div>-->
                             <div class="chart">
-                                <img src="{% static 'main/mainPage/images/chart_services.png' %}" alt="chart_services">
+                                <canvas id="resGraph", width="400", height="400"></canvas>
+                                <script type="application/javascript">drawCallResGraph()</script>
                             </div>
                         </div>
                     </div>

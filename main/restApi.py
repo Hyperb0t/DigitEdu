@@ -10,7 +10,7 @@ def pointGraphDataJson(request, studentR, subjectR):
         for pointlist in PointList.objects.order_by("semester").filter(student__id=studentR, subject__id=subjectR):
             pointlist_data.append(pointlist.point)
             pointlist_labels.append(str(pointlist.semester) + "й семестр")
-        subject_name = "баллы по предмету" + Subject.objects.get(pk=subjectR).name
+        subject_name = "баллы по предмету " + Subject.objects.get(pk=subjectR).name
     else:
         pointlist_data = Student.objects.get(pk=studentR).semester_sorted_medium_points()
         i = 0

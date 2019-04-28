@@ -11,7 +11,7 @@ def starter(request):
 
 
 def main(request):
-    if SessionBeginDate.DoesNotExist():
+    if len(SessionBeginDate.objects.all())==0:
         date1 = datetime.datetime.now()
     else:
         date1 = SessionBeginDate.objects.all()[0].date
