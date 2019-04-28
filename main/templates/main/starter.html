@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load staticfiles %}
     <meta charset="UTF-8">
-    <title>DigitEdu</title>
-    <h1>Классная стартовая страничка</h1>
-    <h2>Здесь какие-то интересные штуки</h2>
-    <a href="/main">Начать использование</a>
+    <title>Digit Edu - Образовательная аналитика</title>
+    <link rel="stylesheet" href="{% static 'main/starter/css/style.css' %}">
 </head>
 <body>
+    <main>
+        <div class="wrapper">
+            <header>
 
+                <!-- <img src="{% static 'main/starter/images/logo.png' %}" alt="">-->
+                <h1>DigitEdu</h1>
+            </header>
+            <div class="main__description">
+                <div class="left">
+                    <div class="top">
+                        <h1 class="title">DIGIT EDU</h1>
+                    </div>
+                    <div class="line"></div>
+                    <div class="bottom">
+                        <p class="description">Это уникальный сервис для студентов КФУ, в котором вы сможете:</p>
+                        <ul class="possibilities">
+                            <li class="possibility">Просмотреть статистику своей успеваемости</li>
+                            <li class="possibility">Посмотреть рейтинг студентов в группе/на курсе</li>
+                            <li class="possibility">Посмотреть количество оставшихся пар</li>
+                            <li class="possibility">Узнать о лучших сервисах для подготовки к экзаменам</li>
+                            <li class="possibility">Увидеть обратный отсчёт до сессии/первых экзаменов</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="top">
+                        <img src="{% static 'main/starter/images/chart.png' %}" alt="" class="chart">
+                    </div>
+                    <div class="bottom">
+                        <a href="main" class="button center">
+                            <p class="center">НАЧАТЬ</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="copyright center">Copyright © DigitEdu | 2019 | Все права защищены </p>
+    </footer>
 </body>
 </html>

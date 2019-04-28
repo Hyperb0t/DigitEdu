@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Авторизация</title>
+{% extends "main/main.html" %}
+
+{% block login %}
     <form action="" method="post">{% csrf_token %}
         <p><input name="login">Логин</p>
         <p><input type="password" name="pswd">Пароль</p>
         <p><input type="submit">Войти</p>
     </form>
-</head>
-<body>
-
-</body>
-</html>
+{% endblock %}

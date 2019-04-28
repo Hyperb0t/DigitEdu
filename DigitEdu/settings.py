@@ -25,7 +25,7 @@ SECRET_KEY = 'npu*=fy#$zaq46_%m!n@9lfl^$k8hygytx=9%h$wsot=_cvt--'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.43.198", "localhost", "193.161.193.99", "127.0.0.1"]
+ALLOWED_HOSTS = ["192.168.43.198", "localhost", "193.161.193.99", "127.0.0.1", "hyperbulator.pythonanywhere.com"]
 
 
 # Application definition
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'DigitEdu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'dbbig.sqlite3'),
     }
 }
 
@@ -121,5 +121,5 @@ STATICFILES_DIRS = [
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+STATIC_ROOT = '/home/Hyperbulator/digitedu/static'
 STATIC_URL = '/static/'

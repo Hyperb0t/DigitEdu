@@ -1,19 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DigitEdu: Главная</title>
-    <h1>Главная</h1>
-    <a href=
-            {% if user.is_authenticated %}
-            "/cabinet"
-            {% else %}
-            "/login"
-            {% endif %}
-    >Личный кабинет</a>
-    <h3>Какая-то инфографика</h3>
-    <h4>Дата начала сессии {{ session.date }}</h4>
-</head>
-<body>
-</body>
-</html>
+{% extends "wrapper.html" %}
+
+{% load staticfiles %}
+
+
+{% block title %}
+    <title>Digit Edu | Главная</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'main/mainPage/css/style.css' %}"/>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="{% static 'main/mainPage/css/timer/base.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block navigation %}
+    {% include 'includes/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="{% static 'main/mainPage/js/timer/digital-countdown.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/lessonsGraph.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/resGraph.js' %}"></script>
+    <script src="{% static 'main/mainPage/js/topGraph.js' %}"></script>
+
+    <main>
+        <div class="blocks">
+            <div class="wrapper">
+                {% if user.is_authenticated and not user.is_superuser and not user.is_staff %}
+                    <div class="main__timeline block">
+                        <div class="top">
+                            <p class="title">Прослушано пар</p>
+                        </div>
+                        <div class="bottom">
+                            <div class="onlyChart">
+                                <canvas id="lessonsGraph" alt=""></canvas>
+                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.group.pk }})</script>
+                            </div>
+
+                            <!--<div class="left">
+                            <canvas id="lessonsGraph" alt=""></canvas>
+                                <script type="application/javascript">drawStudentLessonsGraph({{ user.student.pk }})</script>
+
+                                </div>
+                            <div class="right">
+                                <ul class="subjects">
+                                    {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
+                                        <li class="subject">{{ lesson.subject.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <ul class="counts">
+                                    {% for lesson in user.student.group.subject_sorted_lesson_set.all %}
+                                        <li class="count">{{ lesson.passed }} из {{ lesson.total }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>-->
+                        </div>
+                    </div>
+                {% endif %}
+
+
+                <div class="main__timer block">
+                    <div class="title">До первого экзамена</div>
+                    <div class="timer">
+                        <div id="this_clock" class="clock"></div>
+                    </div>
+                </div>
+
+                <a data-toggle="modal"
+                        {% if user.is_authenticated %}
+                   onclick="location.href='/cabinet';"
+                        {% else %}
+                   href="#exampleModal"
+                        {% endif %}>
+                    <div class="main__profile block-login">
+                        <div class="content">
+                            <div class="title">Личный кабинет</div>
+                            <div class="subtitle">Анализ успеваемости и другая полезная информация в вашем профиле</div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="main__ratings block">
+                    <div class="content">
+                        <div class="title">Рейтинги</div>
+                        <div class="subtitle">Рейтинг студентов по результатам последней сессии</div>
+                        <div class="chart_block">
+                            <div class="theme_slider">
+                                <div class="previous"><</div>
+                                <div class="cur_theme">Алгебра и Геометрия</div>
+                                <div class="next">></div>
+                            </div>
+                            <div class="chart">
+                                {% comment %}<div class="s1">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s2">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s3">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s4">
+                                    <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                         class="stud-avatar">
+                                    <p class="stud-name">Вы</p>
+                                    <p class="stud-points">90</p>
+                                </div>
+                                <div class="s5">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s6">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s7">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">auth_user
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>{% endcomment %}
+                                <!--<img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">-->
+                                <canvas id="topGraph" width="800" height="570" subjectId="1"></canvas>
+                                <script type="application/javascript">drawCallTopGraph(1)</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main__services block">
+                    <div class="content">
+                        <div class="title">Сервисы</div>
+                        <div class="subtitle">Наиболее используемые сервисы для подготовки / развития /
+                            времяпровождения
+                        </div>
+                        <div class="chart_block">
+                            <!--<div class="theme_slider">
+                                <div class="previous"><</div>
+                                <div class="cur_theme">Алгебра и Геометрия</div>
+                                <div class="next">></div>
+                            </div>-->
+                            <div class="chart">
+                                <canvas id="resGraph", width="400", height="330"></canvas>
+                                <script type="application/javascript">drawCallResGraph()</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% include 'includes/loginModal.html' %}
+
+    <script type="application/javascript">$("#this_clock").countdownDigital({
+        dateTo: '{{ date|date:"c" }}'
+    });</script>
+    <script src="{% static 'main/mainPage/js/script.js' %}"></script>
+
+{% endblock %}

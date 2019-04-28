@@ -1,0 +1,92 @@
+{% extends "wrapper.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    <title>Digit Edu | Личный кабинет</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'main/cabinet/css/style.css' %}"/>
+{% endblock %}
+
+{% block navigation %}
+    {% include 'includes/header.html' %}
+{% endblock %}
+
+{% block content %}
+    <main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+        <script src="{% static 'main/cabinet/js/dynamicsGraph.js' %}"></script>
+        <script src="{% static 'main/cabinet/js/secondGraph.js' %}"></script>
+        <div class="blocks">
+            <div class="wrapper">
+                {% block additionalContent %}
+                {% endblock %}
+                <div class="main__profile_info">
+                    <div class="profile_picture block">
+                        <img src="{% static 'main/cabinet/images/profile_avatar.png' %}" alt="Profile" class="center">
+                    </div>
+                    <div class="profile_details block">
+                        <h3 class="profile_status">
+                            {% if user.is_superuser or request.user.is_staff %}
+                                Деканат
+                            {% else %}
+                                Студент
+                            {% endif %}
+                        </h3>
+                        <div class="line"></div>
+                        <div class="profile_info">
+                            <ul class="states_keys">
+                                <li class="state_key name">Имя:</li>
+                                <li class="state_key stage">Курс:</li>
+                                <li class="state_key group">Группа:</li>
+                            </ul>
+                            <ul class="states_values">
+                                <li class="state_value name">
+                                    {{ student.name }} {{ student.surname }}
+                                </li>
+                                <li class="state_value stage">1</li>
+                                <li class="state_value group">{{ student.group }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__performance block">
+                    <div class="content">
+                        <div class="title">Динамика успеваемости</div>
+                        <div class="subtitle">Отображает изменение ситуации по учёбе</div>
+                        <div class="chart_block">
+                            <div class="chart">
+                                <canvas id="dynamicsGraph" alt="Profile" width="700" height="400"></canvas>
+                                <script type="application/javascript">displayStudentDynGraph({{ student.pk }}, 1)</script>
+                            </div>
+                            <!--
+                        <canvas id="dynamicsGraph" alt="Profile" width="400" height="400"></canvas>
+                        <script type="application/javascript">displayStudentDynGraph({{ student.pk }}, 1)</script>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="main__points block">
+                    <div class="content">
+                        <div class="title">Баллы за сессию</div>
+                        <div class="subtitle">Итоговые баллы по минувшим экзаменам</div>
+                        <div class="chart_block" style="display:none">
+                            <div class="chart">
+                                <canvas id="secondGraph" alt="Profile" width="700" height="400"></canvas>
+                                <script type="application/javascript">displayStudentSecondGraph({{ student.pk }})</script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper">
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Includes -->
+        <script src="{% static 'main/cabinet/js/script.js' %}"></script>
+    </main>
+{% endblock %}

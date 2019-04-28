@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<header>
+    <div class="wrapper">
+        <div class="left">
+            <div class="content">
+                <button onclick="location.href='/main'">
+                    <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
+                </button>
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser or user.is_staff %}
+                        <button onclick="location.href='/admin'">
+                            <p class="center" id="poll">Редактировать БД</p>
+                        </button>
+                    {% else %}
+                        <button type="button" data-toggle="modal" data-target="#survey">
+                            <p class="center" id="poll">Пройти опрос</p>
+                        </button>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="right">
+            <div class="swiper content dropdown open">
+                <div class="dropdown open">
+                    <button type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <img src="{% static 'main/mainPage/images/swiper.png' %}" alt="">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% if user.is_authenticated %}
+                            <a class="dropdown-item" href="/cabinet">Личный кабинет</a>
+                            <a class="dropdown-item" href="/logout">Выйти</a>
+                        {% else %}
+                            <a data-toggle="modal" class="dropdown-item" href="#exampleModal">Войти</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="avatar content">
+                <img src="{% static 'main/mainPage/images/avatar.png' %}" alt="">
+            </div>
+            <div class="name content">
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser or user.is_staff%}
+                        Деканат
+                    {% else %}
+                        {{ user.student.name }} {{ user.student.surname }}
+                    {% endif %}
+                {% else %}
+                    Неавторизованный пользователь
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+</header>

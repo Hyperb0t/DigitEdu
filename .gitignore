@@ -1,3 +1,6 @@
 .idea/*
 DigitEdu/__pycache__/*
-main/migrations/__pycache/*
+main/migrations/__pycache__/*
+*.pyc
+db.sqlite3
+dbbig.sqlite3

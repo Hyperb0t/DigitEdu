@@ -32,11 +32,25 @@ class Student(models.Model):
     def semester_sorted_pointlist_set(self):
         return self.pointlist_set.order_by('semester')
 
+    def semester_sorted_medium_points(self):
+        i = 0
+        medium_points = []
+        while i < list(self.semester_sorted_pointlist_set())[-1].semester:
+            medium_points.append(0)
+            for pointlist in self.semester_sorted_pointlist_set().filter(semester=i+1):
+                medium_points[i]+=pointlist.point
+            medium_points[i] /= len(self.semester_sorted_pointlist_set().filter(semester=i+1))
+            i+=1
+        return medium_points
+
+
+
 
 
 class ResourceToStudent(models.Model):
     student = models.OneToOneField(Student, on_delete=models.CASCADE)
-    resource = models.ForeignKey(AdditionalEduResource, on_delete=models.SET_DEFAULT, default= "")
+    resource = models.ForeignKey(AdditionalEduResource, on_delete=models.SET_DEFAULT, default=
+                                 AdditionalEduResource.objects.all()[0])
 
     def __str__(self):
         return str(self.student) + " " + str(self.resource)
@@ -55,7 +69,7 @@ class PointList(models.Model):
     semester = models.PositiveSmallIntegerField("semester")
 
     class Meta:
-        unique_together = ("student", "subject")
+        unique_together = ("student", "subject", "semester")
 
     def __str__(self):
         return self.student.__str__() + " " + self.subject.name + " " + self.semester.__str__()
