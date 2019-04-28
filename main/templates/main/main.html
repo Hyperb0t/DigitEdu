@@ -79,7 +79,7 @@
                         {% else %}
                    href="#exampleModal"
                         {% endif %}>
-                    <div class="main__profile block">
+                    <div class="main__profile block-login">
                         <div class="content">
                             <div class="title">Личный кабинет</div>
                             <div class="subtitle">Анализ успеваемости и другая полезная информация в вашем профиле</div>
@@ -98,7 +98,61 @@
                                 <div class="next">></div>
                             </div>
                             <div class="chart">
-                                <img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">
+                                <div class="s1">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s2">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s3">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s4">
+                                    <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                         class="stud-avatar">
+                                    <p class="stud-name">Вы</p>
+                                    <p class="stud-points">90</p>
+                                </div>
+                                <div class="s5">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s6">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <div class="s7">
+                                    <div class="stud-block">
+                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
+                                             class="stud-avatar">
+                                        <p class="stud-name">Name</p>
+                                        <p class="stud-points">90</p>
+                                    </div>
+                                </div>
+                                <!--<img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">-->
                             </div>
                         </div>
                     </div>
@@ -117,7 +171,7 @@
                                 <div class="next">></div>
                             </div>-->
                             <div class="chart">
-                                <canvas id="resGraph", width="400", height="400"></canvas>
+                                <canvas id="resGraph" , width="400" , height="400"></canvas>
                                 <script type="application/javascript">drawCallResGraph()</script>
                             </div>
                         </div>
