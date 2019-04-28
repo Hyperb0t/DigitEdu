@@ -1,6 +1,6 @@
 from .models import Student, Subject, PointList, Lesson, AdditionalEduResource, ResourceToStudent
 from django.http import JsonResponse
-import sys
+import random, sys
 
 def pointGraphDataJson(request, studentR, subjectR):
     pointlist_data = []
@@ -57,11 +57,16 @@ def lastSessionDataJson(request, studentR):
 def resDataJson(request):
     res_data = []
     res_labels = []
+    res_colors = []
     for res in AdditionalEduResource.objects.all():
         res_data.append(len(ResourceToStudent.objects.all().filter(resource=res)))
         res_labels.append(res.name)
+        col = "#{:06x}".format(random.randint(0, 0xFFFFFF))
+        col += '32'
+        res_colors.append(col)
     return JsonResponse({"datasets": [{"data": res_data,
-                                       "label": "использование дополнительных образовательных ресурсов"}],
+                                       "label": "использование дополнительных образовательных ресурсов",
+                                       "backgroundColor" : res_colors}],
                          "labels": res_labels})
 
 def studentsTopDataJson(request, subjectR):
@@ -79,7 +84,8 @@ def studentsTopDataJson(request, subjectR):
 
 def surnameSearchJson(request, surnameR):
     studs = []
-    for stud in Student.objects.filter(surname__contains=surnameR):
+    lst = list(Student.objects.filter(surname__contains=surnameR)) + list(Student.objects.filter(name__contains=surnameR))
+    for stud in lst:
         st = {"name": stud.name, "surname": stud.surname, "id": stud.pk}
         studs.append(st)
     return JsonResponse({"students": studs})

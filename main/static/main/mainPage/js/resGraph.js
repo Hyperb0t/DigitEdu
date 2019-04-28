@@ -5,7 +5,7 @@ $.ajax({
     url: "/graphrestapi/res",
     success: drawResGraph,
     error: function (error_data) {
-        console.log("can't get data for lessons graph");
+        console.log("can't get data for res graph");
         console.log(error_data);
         drawResGraph({});
     }
@@ -16,9 +16,14 @@ $.ajax({
 function drawResGraph(data) {
     var ctx = document.getElementById("resGraph");
     var graph = new Chart(ctx, {
-        type: "pie",
+        type: "doughnut",
         data: data,
-        options: {}
-    });
+        options: {legend: {
+            labels: {
+                fontColor: "white",
+                fontSize: 15
+            }
+        }}
+    },{scaleFontColor: "#FFFFFF"});
     ctx = graph;
 }

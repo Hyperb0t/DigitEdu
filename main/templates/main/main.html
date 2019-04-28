@@ -33,7 +33,7 @@
     <main>
         <div class="blocks">
             <div class="wrapper">
-                {% if user.is_authenticated and not user.is_superuser %}
+                {% if user.is_authenticated and not user.is_superuser and not user.is_staff %}
                     <div class="main__timeline block">
                         <div class="top">
                             <p class="title">Прослушано пар</p>
@@ -117,7 +117,7 @@
                                 <div class="next">></div>
                             </div>-->
                             <div class="chart">
-                                <canvas id="resGraph", width="400", height="400"></canvas>
+                                <canvas id="resGraph", width="400", height="330"></canvas>
                                 <script type="application/javascript">drawCallResGraph()</script>
                             </div>
                         </div>

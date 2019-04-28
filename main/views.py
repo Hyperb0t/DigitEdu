@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 import datetime
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden, JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import SessionBeginDate,Student
+from .models import SessionBeginDate, Student, AdditionalEduResource
 from . import restApi
 
 
@@ -15,16 +15,18 @@ def main(request):
         date1 = datetime.datetime.now()
     else:
         date1 = SessionBeginDate.objects.all()[0].date
-    return render(request, 'main/main.html', {"date": date1})
+    return render(request, 'main/main.html', {"date": date1,
+                                              "resources": AdditionalEduResource.objects.all()})
 
 
 def cabinet(request):
     if (request.user.is_authenticated):
-        if (request.user.is_superuser):
+        if (request.user.is_superuser or request.user.is_staff):
             return render(request, 'main/lkA.html')
             # return HttpResponseRedirect('/admin')
         else:
-            return render(request, 'main/lk.html', {"student": request.user.student})
+            return render(request, 'main/lk.html', {"student": request.user.student,
+                                              "resources": AdditionalEduResource.objects.all()})
     else:
         return redirect('/login')
 
@@ -64,7 +66,7 @@ def resData(request):
     return restApi.resDataJson(request)
 
 def adminStudentCabinet(request, studentR):
-    if(request.user.is_superuser):
+    if(request.user.is_superuser or request.user.is_staff):
         return render(request, 'main/lkA.html', {"student": Student.objects.get(pk=studentR)})
     else:
         return HttpResponseForbidden("You are not admin")

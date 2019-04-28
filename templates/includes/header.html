@@ -7,7 +7,7 @@
                     <h1 id="logo" onclick="location.href='/main'">DigitEdu</h1>
                 </button>
                 {% if user.is_authenticated %}
-                    {% if user.is_superuser %}
+                    {% if user.is_superuser or user.is_staff %}
                         <button onclick="location.href='/admin'">
                             <p class="center" id="poll">Редактировать БД</p>
                         </button>
@@ -43,7 +43,7 @@
             </div>
             <div class="name content">
                 {% if user.is_authenticated %}
-                    {% if user.is_superuser %}
+                    {% if user.is_superuser or user.is_staff%}
                         Деканат
                     {% else %}
                         {{ user.student.name }} {{ user.student.surname }}

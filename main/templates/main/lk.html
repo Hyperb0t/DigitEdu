@@ -31,7 +31,7 @@
                     </div>
                     <div class="profile_details block">
                         <h3 class="profile_status">
-                            {% if user.is_superuser %}
+                            {% if user.is_superuser or request.user.is_staff %}
                                 Деканат
                             {% else %}
                                 Студент
