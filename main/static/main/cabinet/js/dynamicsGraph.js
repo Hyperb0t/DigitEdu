@@ -22,9 +22,11 @@ function drawDynGraph(data) {
                 yAxes: [{
                     ticks: {
                         beginAtZero: true,
-                        max: 100
+                        max: 100,
+                        fontColor: '#FFFFFF'
                     }
-                }]
+                }],
+                xAxes: [{ticks: {fontColor: '#FFFFFF'}}]
             }
         }
     })
