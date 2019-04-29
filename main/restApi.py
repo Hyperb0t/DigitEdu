@@ -19,7 +19,8 @@ def pointGraphDataJson(request, studentR, subjectR):
         subject_name = "средний балл"
 
     return JsonResponse({"datasets": [{"data": pointlist_data,
-                                       "label": subject_name}],
+                                       "label": subject_name,
+                                       "backgroundColor": '#FFFFFF65'}],
                          "labels": pointlist_labels})
 
 
