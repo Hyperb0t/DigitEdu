@@ -20,7 +20,8 @@ def pointGraphDataJson(request, studentR, subjectR):
 
     return JsonResponse({"datasets": [{"data": pointlist_data,
                                        "label": subject_name}],
-                         "labels": pointlist_labels})
+                         "labels": pointlist_labels,
+                         "subject": Subject.objects.get(subjectR).name})
 
 
 def lessonGraphDataJson(request, groupR):

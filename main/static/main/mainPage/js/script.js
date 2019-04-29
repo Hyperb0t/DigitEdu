@@ -1,4 +1,61 @@
+/*** USER SETTINGS ***/
+// transition
+let FADE_TIME = 700;
+let CLICKED_TIME = 1500;
 
+/********************************** slider ********************************/
+$('.previous').click(function () {
+    slick(-1);
+    event.stopPropagation();
+    drawCallTopGraph();
+});
+
+$('.next').click(function () {
+    slick(1);
+    event.stopPropagation();
+    drawCallTopGraph();
+});
+
+function slick(delta) {
+    let cur_theme = $(".cur_theme");
+
+    let UPPER_BOUND = 7;//parseInt($(".theme_slider").attr('id'));
+    let LOWER_BOUND = 1;
+
+    let current = parseInt(cur_theme.attr("id"));
+
+    if (current === UPPER_BOUND && delta > 0) {
+        current = LOWER_BOUND;
+    } else if (current === LOWER_BOUND && delta < 0 ) {
+        current = UPPER_BOUND;
+    } else {
+        current = current + delta;
+    }
+
+    cur_theme.attr("id", current);
+
+    $(".cur_theme, .chart").fadeOut(FADE_TIME, function () {
+        // cur_theme.html("[" + current + "]");;
+
+    //     $.ajax({
+    // method: "GET",
+    // url: "/graphrestapi/subjname/" + document.getElementsByClassName("cur_theme")[0].getAttribute("id"),
+    //         success: function (data) {
+    //         $(".cur_theme").html(data["subject"]);
+    //         console.log(data["subject"]);
+    //     },
+    //         error: function (data) {
+    //         $(".cur_theme").html(data["subject"]);
+    //         }
+    //     });
+
+        $(".cur_theme, .chart").fadeIn(FADE_TIME);
+        // cur_theme.html(label)
+    });
+
+    console.log(current)
+}
+/********************************** fading-expanding ********************************/
 $(".block").click(function(){
     // console.log("active!!!");
     // $(className).css("background-image", 'url("img/bg_rating_clicked.png")');

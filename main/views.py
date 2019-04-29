@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 import datetime
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from .models import SessionBeginDate, Student, AdditionalEduResource, PointList
+from .models import SessionBeginDate, Student, AdditionalEduResource, PointList, Subject
 
 from . import restApi
 
@@ -16,7 +17,8 @@ def main(request):
     else:
         date1 = SessionBeginDate.objects.all()[0].date
     return render(request, 'main/main.html', {"date": date1,
-                                              "resources": AdditionalEduResource.objects.all()})
+                                              "resources": AdditionalEduResource.objects.all(),
+                                              "subjects": list(Subject.objects.all())})
 
 
 def cabinet(request):
@@ -85,3 +87,7 @@ def survey(request):
             r.resource = AdditionalEduResource.objects.get(pk=request.POST['radios'])
             r.save()
     return redirect('/main')
+
+
+def subjname(request, subjectR):
+    return JsonResponse({"subject": str(Subject.objects.get(subjectR).name)})

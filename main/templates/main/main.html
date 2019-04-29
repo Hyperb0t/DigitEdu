@@ -93,66 +93,14 @@
                         <div class="title">Рейтинги</div>
                         <div class="subtitle">Рейтинг студентов по результатам последней сессии</div>
                         <div class="chart_block">
-                            <div class="theme_slider">
-                                <div class="previous"><</div>
-                                <div class="cur_theme">Алгебра и Геометрия</div>
-                                <div class="next">></div>
-                            </div>
+                            <!--theme_slider#id - your amount of subjects-->
+                        <div id="{{ subjects.count }}" class="theme_slider">
+                            <div class="previous slider_button"><</div>
+                            <!--cur_theme#id - cur_id for your label and chart : db_labels[i] - cur_label-->
+                            <div id="1" class="cur_theme">Алгебра и Геометрия</div>
+                            <div class="next slider_button">></div>
+                        </div>
                             <div class="chart">
-                                {% comment %}<div class="s1">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>
-                                <div class="s2">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>
-                                <div class="s3">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>
-                                <div class="s4">
-                                    <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                         class="stud-avatar">
-                                    <p class="stud-name">Вы</p>
-                                    <p class="stud-points">90</p>
-                                </div>
-                                <div class="s5">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>
-                                <div class="s6">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>
-                                <div class="s7">
-                                    <div class="stud-block">
-                                        <img src="{% static 'main/cabinet/images/avatar.png' %}" alt="ava"
-                                             class="stud-avatar">auth_user
-                                        <p class="stud-name">Name</p>
-                                        <p class="stud-points">90</p>
-                                    </div>
-                                </div>{% endcomment %}
                                 <!--<img src="{% static 'main/mainPage/images/chart_rating.png' %}" alt="chart_rating">-->
                                 <canvas id="topGraph" width="800" height="570" subjectId="1"></canvas>
                                 <script type="application/javascript">drawCallTopGraph(1)</script>
