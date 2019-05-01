@@ -1,10 +1,12 @@
 function drawCallTopGraph() {
-    subjectR = document.getElementById("topGraph").getAttribute("subjectId")
+    subjectR = document.getElementsByClassName("cur_theme")[0].getAttribute("id");
     var graphData;
 $.ajax({
     method: "GET",
     url: "/graphrestapi/top/" + subjectR,
-    success: drawTopGraph,
+    success: function (data) {
+        drawTopGraph(data);
+    },
     error: function (error_data) {
         console.log("can't get data for top graph");
         console.log(error_data);
@@ -40,4 +42,8 @@ function drawTopGraph(data) {
         }}
     ,{scaleFontColor: "#FFFFFF"});
     ctx = graph;
+    let label = (data["datasets"][0]["label"]).replace('Топ лучших студентов по предмету ', "").replace(" за последний семестр","");
+    $(".cur_theme").html(label);
+    // console.log(data["datasets"][0]["label"]);
+    console.log(label);
 }
